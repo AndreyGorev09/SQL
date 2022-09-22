@@ -1,0 +1,26 @@
+SHOW databases;
+CREATE DATABASE test;
+USE test;
+CREATE TABLE client (
+    id INT,
+    fname VARCHAR(30),
+    lname VARCHAR(30),
+    email VARCHAR(30)
+    );
+DESC client;
+INSERT INTO client VALUES (
+    0,
+    'full_fname',
+    'full_lname',
+    'test@gmail.com'
+    );
+INSERT INTO client (fname, email) VALUES (
+    'robert',
+    'new@gmail.com'
+    );
+SELECT * FROM client;
+DROP TABLE client;
+DROP DATABASE test;
+SHOW databases;
+
+
