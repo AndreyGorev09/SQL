@@ -62,6 +62,8 @@ SELECT * FROM products WHERE NOT price BETWEEN 50 AND 100;
 SELECT name, shop_name, price FROM products WHERE NOT name BETWEEN 'A' AND 'C';
 
 
+SELECT * FROM products WHERE (price > 50 AND rate > 7) AND shop_name LIKE '%s%';
+
 
 
 
