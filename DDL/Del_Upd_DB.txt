@@ -1,0 +1,29 @@
+SHOW DATABASES;
+USE test;
+CREATE TABLE movies (
+    name VARCHAR(50),
+    duration INT,
+    likes INT,
+    dislikes INT,
+    droper INT);
+
+INSERT INTO movies VALUES ( 'Hello World!', 60, 3, 50, 84);
+INSERT INTO movies VALUES ( 'My root', 240, 4, 192, 98);
+INSERT INTO movies VALUES ( 'How to create a minecraft mod', 1200, 598, 13, 18);
+INSERT INTO movies VALUES ( 'Counter Strike CHEATS', 360, 40, 1200, 92);
+INSERT INTO movies VALUES ( 'Earth - our planet', 3672, 5384, 32, 9);
+INSERT INTO movies VALUES ( 'CMTV Movies', 60, 999, 0, 0);
+INSERT INTO movies VALUES ( 'Just bad movie', 10, 0, 100,100);
+
+SELECT * FROM movies;
+SELECT * FROM movies WHERE (likes > 100 OR dislikes < 100) AND droper < 70;
+
+DELETE FROM movies WHERE droper < 5;
+SELECT * FROM movies;
+
+UPDATE movies SET dislikes = 100 WHERE name = 'Earth - our planet';
+SELECT * FROM movies;
+
+UPDATE movies SET likes = likes * 3;
+
+
