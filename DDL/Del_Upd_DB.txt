@@ -7,6 +7,8 @@ CREATE TABLE movies (
     dislikes INT,
     droper INT);
 
+
+ВСТАВЛЯЕМ ЗНАЧЕНИЯ В ТАБЛИЦУ:
 INSERT INTO movies VALUES ( 'Hello World!', 60, 3, 50, 84);
 INSERT INTO movies VALUES ( 'My root', 240, 4, 192, 98);
 INSERT INTO movies VALUES ( 'How to create a minecraft mod', 1200, 598, 13, 18);
@@ -18,12 +20,18 @@ INSERT INTO movies VALUES ( 'Just bad movie', 10, 0, 100,100);
 SELECT * FROM movies;
 SELECT * FROM movies WHERE (likes > 100 OR dislikes < 100) AND droper < 70;
 
+
+УДАЛЯЕМ ЗАПИСЬ ИЗ ТАБЛИЦЫ ПО ПОЛЮ У КОТОРЫХ ЗНАЧЕНИЯ ПОЛЯ МЕНЬШЕ 5:
 DELETE FROM movies WHERE droper < 5;
 SELECT * FROM movies;
 
+
+ОБНОВЛЯЕМ ЗАПИСЬ ИЗ ТАБЛИЦЫ ПО ПОЛЮ У КОТОРЫХ ЗНАЧЕНИЯ ПОЛЯ РАВНО СРАВНИВАЕМОМУ ЗНАЧЕНИЮ:
 UPDATE movies SET dislikes = 100 WHERE name = 'Earth - our planet';
 SELECT * FROM movies;
 
+
+ОБНОВЛЯЕМ ЗАПИСЬ ИЗ ТАБЛИЦЫ ПО ПОЛЮ ЧЕРЕЗ ПРИСВАЕВАНИЕ И МАТЕМАТИЧЕСКУЮ ОПЕРАЦИЮ:
 UPDATE movies SET likes = likes * 3;
 
 

@@ -1,10 +1,17 @@
+СПОСОБЫ ИСПОЛЬЗОВАНИЕ ОПЕРАТОРА SELECT В ТАБЛИЦЕ:
 SHOW databases;
+
+
 USE test;
+
+
 CREATE TABLE products (
     name VARCHAR(30),
     shop_name VARCHAR(30),
     price INT,
     rate INT);
+
+
 INSERT INTO products VALUES ('Apples', 'Dicsi', 49, 7);
 INSERT INTO products VALUES ( 'Pie', 'Perecrestok', 76, 9 );
 INSERT INTO products VALUES ( 'Coca-Cola', 'Dicsi', 40, 10 );
@@ -15,7 +22,12 @@ INSERT INTO products VALUES ( 'Diary', 'Dicsi', 45, 7 );
 INSERT INTO products VALUES ( 'Bread', 'Perecrestok', 20, 9 );
 INSERT INTO products VALUES ( 'Cheese', 'Perecrestok', 59, 3 );
 
+
+ВЫВОДИМ СОДЕРЖИМОЕ ТАБЛИЦЫ:
 SELECT * FROM products;
+
+
+ВЫВОДИМ СОДЕРЖИМОЕ ТАБЛИЦЫ ПО СРАНИВАЕМОМУ ПОЛЮ И ЕГО ЗНАЧЕНИЮ:
 SELECT * FROM products WHERE rate = 8;
 SELECT * FROM products WHERE rate <= 8;
 SELECT * FROM products WHERE rate >= 10;
@@ -25,6 +37,7 @@ SELECT * FROM products WHERE rate != 7;
 SELECT * FROM products WHERE name = 'Apples';
 SELECT * FROM products WHERE name_shop != 'Dicsi';
 
+ИЛИ ТАКИМ СПОСОБОМ
 
 SELECT name, shop_name, price, rate FROM products;
 SELECT name, shop_name, price, rate FROM products WHERE rate = 8;
@@ -36,32 +49,58 @@ SELECT name, shop_name, price, rate FROM products WHERE rate != 7;
 SELECT name, shop_name, price, rate FROM products WHERE name != 'Cheese';
 SELECT name, shop_name, price, rate FROM products WHERE shop_name = 'Dicsi';
 
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЯМ И ЕГО ЗНАЧЕНИЯМ ЧЕРЕЗ ОПЕРАТОР AND:
 SELECT * FROM products WHERE shop_name = 'Dicsi' AND rate = 7;
 SELECT name, shop_name, price, rate FROM products WHERE shop_name = 'Dicsi' AND rate = 7;
 
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЯМ И ЕГО ЗНАЧЕНИЯМ ЧЕРЕЗ ОПЕРАТОР OR:
 SELECT * FROM products WHERE shop_name = 'Dicsi' OR rate = 7;
 SELECT name, shop_name, price, rate FROM products WHERE shop_name = 'Dicsi' OR rate = 7;
 
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЯМ И ЕГО ЗНАЧЕНИЯМ СОДЕРЖАЩИХ СИМВОЛОВ В СЛОВАХ(символ s в середине) :
 SELECT * FROM products WHERE name LIKE '%s%';
 SELECT name, shop_name, price, rate FROM products WHERE name LIKE '%s%';
 
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЯМ И ЕГО ЗНАЧЕНИЯМ СОДЕРЖАЩИХ СИМВОЛОВ В СЛОВАХ(символы ok и si в конце)
 SELECT * FROM products WHERE shop_name LIKE '%ok';
 SELECT name, shop_name, price, rate FROM products WHERE shop_name LIKE '%si';
 
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЯМ И ЕГО ЗНАЧЕНИЯМ СОДЕРЖАЩИХ СИМВОЛОВ
+В СЛОВАХ(один символ перед ere и ics находящиеся в середине) И ЧЕРЕЗ ОПЕРАТОР AND и OR:
 SELECT * FROM products WHERE shop_name LIKE '_ere%' AND rate < 7;
 SELECT name, shop_name, price, rate FROM products WHERE shop_name LIKE '_ics%' OR rate = 7;
 
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЮ В ДИАПОЗОНЕ ОТ 7..9 ВКЛЮЧИТЕЛЬНО:
 SELECT * FROM products WHERE rate IN (7, 8, 9);
 SELECT name, shop_name, rate FROM products WHERE rate IN (7, 10);
 
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЮ МЕЖДУ ДИАПОЗОНОВ ОТ 50..100 ВКЛЮЧИТЕЛЬНО:
 SELECT * FROM products WHERE price BETWEEN 50 AND 100;
+
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЮ МЕЖДУ ДИАПОЗОНОВ ОТ A..C ВКЛЮЧИТЕЛЬНО:
 SELECT name, shop_name, price FROM products WHERE name BETWEEN 'A' AND 'C';
+
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЮ МЕЖДУ ДИАПОЗОНОВ ОТ A..Z ВКЛЮЧИТЕЛЬНО:
 SELECT * FROM products WHERE name BETWEEN 'A' AND 'Z';
 
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЮ НЕ ВКЛЮЧАЮЩИЕ ДИАПОЗОНЫ ОТ 50..100:
 SELECT * FROM products WHERE NOT price BETWEEN 50 AND 100;
+
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЮ НЕ ВКЛЮЧАЮЩИЕ ДИАПОЗОНЫ ОТ A..C:
 SELECT name, shop_name, price FROM products WHERE NOT name BETWEEN 'A' AND 'C';
 
 
+ВЫВОДИМ СОДЕРЖАНИЕ ТАБЛИЦЫ ПО ПОЛЯМ ИСПОЛЬЗУЯ МНОГОСОСТАВНЫЕ СРАВНЕНИЯ:
 SELECT * FROM products WHERE (price > 50 AND rate > 7) AND shop_name LIKE '%s%';
 
 

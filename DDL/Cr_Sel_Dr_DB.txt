@@ -1,26 +1,57 @@
-SHOW databases;
+ПРОСМОТР СПИСКА БАЗ ДАННЫХ:
+SHOW DATABASES;
+
+
+СОЗДАНИЕ БАЗЫ ДАННЫХ:
 CREATE DATABASE test;
+
+
+ОБОЗНАЧЕНИЕ ИСПОЛЬЗОВАНИЕ ДАННОЙ БАЗЫ ДАННЫХ:
 USE test;
+
+
+СОЗДАНИЕ ТАБЛИЦЫ:
 CREATE TABLE client (
     id INT,
     fname VARCHAR(30),
     lname VARCHAR(30),
     email VARCHAR(30)
     );
+
+
+ПРОСМОТР СТРУКТУРЫ ТАБЛИЦЫ:
 DESC client;
+
+
+ЗАПИСЬ В ТАБЛИЦУ:
 INSERT INTO client VALUES (
     0,
     'full_fname',
     'full_lname',
     'test@gmail.com'
     );
+
+ИЛИ ТАКИМ СПОСОБОМ
+
 INSERT INTO client (fname, email) VALUES (
     'robert',
     'new@gmail.com'
     );
+
+
+ПРОСМОТР ТАБЛИЦЫ:
 SELECT * FROM client;
+
+
+УДАЛЕНИЕ ТАБЛИЦЫ:
 DROP TABLE client;
+
+
+УДАЛЕНИЕ БАЗЫ ДАННЫХ:
 DROP DATABASE test;
-SHOW databases;
+
+
+ПРОСМОТР СПИСКА ТАБЛИЦ:
+SHOW TABLES;
 
 
