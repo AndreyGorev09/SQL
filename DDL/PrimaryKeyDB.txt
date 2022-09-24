@@ -1,0 +1,58 @@
+SHOW DATABASES;
+
+
+USE test;
+
+
+SHOW TABLES;
+
+
+SELECT * FROM products;
+
+
+DROP TABLE products;
+
+
+ДОБАВЛЕНИЕ ПЕРВИЧНОГО КЛЮЧА В НОВУЮ ТАБЛИЦУ:
+CREATE TABLE products (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(50),
+    shop_name VARCHAR(50),
+    price INT,
+    rate INT,
+    PRIMARY KEY (id));
+
+
+INSERT INTO products (name, shop_name, price, rate) VALUES ('Apples', 'Dicsi', 49, 7);
+INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Pie', 'Perecrestok', 76, 9 );
+INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Coca-Cola', 'Dicsi', 40, 10 );
+INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Tomatoes', 'Dicsi', 52, 7 );
+INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Milk', 'Perecrestok', 37, 8 );
+INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Melon', 'Dicsi', 40, 8 );
+INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Diary', 'Dicsi', 45, 7 );
+INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Bread', 'Perecrestok', 20, 9 );
+INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Cheese', 'Perecrestok', 59, 3 );
+
+ИЛИ МОЖНО ДРУГИМ СПОСОБОМ:
+
+INSERT INTO products VALUES (NULL, 'Apples', 'Dicsi', 49, 7);
+INSERT INTO products VALUES (NULL, 'Pie', 'Perecrestok', 76, 9 );
+INSERT INTO products VALUES (NULL, 'Coca-Cola', 'Dicsi', 40, 10 );
+INSERT INTO products VALUES (NULL, 'Tomatoes', 'Dicsi', 52, 7 );
+INSERT INTO products VALUES (NULL, 'Milk', 'Perecrestok', 37, 8 );
+INSERT INTO products VALUES (NULL, 'Melon', 'Dicsi', 40, 8 );
+INSERT INTO products VALUES (NULL, 'Diary', 'Dicsi', 45, 7 );
+INSERT INTO products VALUES (NULL, 'Bread', 'Perecrestok', 20, 9 );
+INSERT INTO products VALUES (NULL, 'Cheese', 'Perecrestok', 59, 3 );
+
+
+SELECT * FROM products;
+
+
+ДОБАВЛЕНИЕ ПЕРВИЧНОГО КЛЮЧА В СУЩЕСТВУЮЩУЮ ТАБЛИЦУ:
+SHOW TABLES;
+SELECT * FROM movies;
+ALTER TABLE movies
+    ADD COLUMN id INT AUTO_INCREMENT FIRST,
+    ADD PRIMARY KEY (id);
+SELECT * FROM movies;
