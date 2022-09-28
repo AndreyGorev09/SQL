@@ -1,0 +1,43 @@
+# ФУНКЦИИ ДЛОЯ РАБОТЫ С ЧИСЛАМИ:
+SHOW DATABASES;
+USE test;
+
+
+# СОЗДАДИМ НОВУЮ ТАБЛИЦУ SALES:
+CREATE TABLE sales
+    (id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    fnames_list VARCHAR(20) NOT NULL,
+    lnames_list VARCHAR(20) NOT NULL,
+    s_product VARCHAR(30) NOT NULL,
+    price INT NOT NULL);
+
+
+# ЗАПОЛНИМ ТАБЛИЦУ SALES ДАННЫМИ:
+INSERT INTO sales VALUES (NULL, 'Петр', 'Радько', 'Хлеб', 16);
+INSERT INTO sales VALUES (NULL, 'Петр', 'Радько', 'Нарезной хлеб', 25);
+INSERT INTO sales VALUES (NULL, 'Петр', 'Радько', 'Молоко', 40);
+INSERT INTO sales VALUES (NULL, 'Николай', 'Нивида', 'Кола 2л', 65);
+INSERT INTO sales VALUES (NULL, 'Николай', 'Нивида', 'Кола 2л', 65);
+INSERT INTO sales VALUES (NULL, 'Николай', 'Нивида', 'Чипсы', 38);
+INSERT INTO sales VALUES (NULL, 'Аня', 'Комарова', 'Колбаса', 42);
+INSERT INTO sales VALUES (NULL, 'Аня', 'Комарова', 'Арбуз', 70);
+INSERT INTO sales VALUES (NULL, 'Аня', 'Комарова', 'Торт', 120);
+INSERT INTO sales VALUES (NULL, 'Аня', 'Комарова', 'Жвачка', 22);
+
+
+# ФУНКЦИЯ SUM ВЫВОДИТ СУММУ ВСЕХ ЧИСЕЛ ПОЛЯ(ЕЙ):
+SELECT SUM(price) FROM sales;
+
+
+# ФУНКЦИЯ NIN/MAX ВЫВОДИТ МИНИМАЛЬНОЕ.МАКСИМАЛЬНОЕ ЧИСЛО ИЗ ПОЛЯ(ЕЙ):
+SELECT s_product, MIN(price) FROM sales;
+SELECT s_product, MAX(price) FROM sales;
+
+SELECT * FROM sales WHERE price = (SELECT MAX(price) FROM sales);
+SELECT * FROM sales WHERE price = (SELECT MIN(price) FROM sales);
+
+
+# ФУНКЦИЯ COUNT ВЫВОДИТ КОЛИЧЕСТВО ЗАПИСЕЙ ПОЛЯ(ПОЛЕЙ).
+  ЕСЛИ ЗНАЧЕНИЕ ПОЛЯ NULL ТО ЗАПИСЬ НЕ БУДЕТ ВКЛЮЧАТЬСЯ В ВЫВОД:
+
+SELECT COUNT(price) FROM sales;
