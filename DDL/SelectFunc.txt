@@ -41,3 +41,38 @@ SELECT * FROM sales WHERE price = (SELECT MIN(price) FROM sales);
   ЕСЛИ ЗНАЧЕНИЕ ПОЛЯ NULL ТО ЗАПИСЬ НЕ БУДЕТ ВКЛЮЧАТЬСЯ В ВЫВОД:
 
 SELECT COUNT(price) FROM sales;
+
+# ФУНКЦИЯ AVG ВЫВОДИТ СРЕДНЕЕ АРИФМИТИЧЕСКОЕ ЧИСЛО:
+SELECT AVG(price) FROM sales;
+
+
+# ГРУППИРУЕТ ВЫВОД SELECT В С ПОМОЩЬЮ ОПЕРАТОРА GROUP BY:
+SELECT fnames_list, SUM(price) FROM sales GROUP BY fnames_list;
+SELECT fnames_list, MAX(price) FROM sales GROUP BY fnames_list;
+SELECT fnames_list, MIN(price) FROM sales GROUP BY fnames_list;
+
+
+# ОПЕРАТОР DISTINCT СОЗДАЕТ ВЫВОД SELECT НЕ СОДЕРЖАЩИЙ ДУБЛИКАТОВ:
+SELECT DISTINCT(fnames_list) FROM sales;
+
+
+# ОПЕРАТОР LIMIT СОЗДАЕТ ВЫВОД SELECT ЗАПИСЕЙ ЧЕРЕЗ НОМЕРА ЗАПИСЕЙ В ПОЛЕ ИЛИ ИНДЕКСОВ ЗАПИСЕЙ ПОЛЯ:
+# СОЗДАДИТ ВЫВОД SELECT В ОТСОРТИРОВАННОМ ПОРЯДКЕ С КОНЦА ПО ПОЛЮ PRICE:
+SELECT * FROM sales ORDER BY price DESC;
+
+# ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО НОМЕРУ ЗАПИСИ В ПОЛЕ(ВЫВЕДЕТ ОДНУ ЗАПИСЬ):
+SELECT * FROM sales ORDER BY price DESC LIMIT 1;
+# ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО НОМЕРУ ЗАПИСИ В ПОЛЕ(ВЫВЕДЕТ ДВЕ ЗАПИСИ):
+SELECT * FROM sales ORDER BY price DESC LIMIT 2;
+
+
+# ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО ИНДЕКСУ ЗАПИСЕЙ В ПОЛЕ(ВЫВЕДЕТ ДВЕ ЗАПИСИ):
+SELECT * FROM sales ORDER BY price DESC LIMIT 0, 2;
+
+# ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО ИНДЕКСУ ЗАПИСЕЙ В ПОЛЕ(ВЫВЕДЕТ ТРИ ЗАПИСИ):
+SELECT * FROM sales ORDER BY price DESC LIMIT 0, 3;
+
+
+
+
+
