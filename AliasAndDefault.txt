@@ -1,0 +1,29 @@
+# ОПЕРАТОРЫ НАЗНАЧЕНИЕ ПСЕВДОНИМОВ AS И ЗНАЧЕНИЙ ПО УМОЛЧАНИЮ DEFAULT.
+SHOW DATABASES;
+USE test;
+SHOW TABLES;
+
+
+# СОЗДАЕМ НОВУЮ ТАБЛИЦУ MAIL В БАЗЕ ДАННЫХ TEST:
+CREATE TABLE mail (
+    id_user INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    fname VARCHAR(25) NOT NULL,
+    lname VARCHAR(25),
+    email VARCHAR(30));
+
+
+# ДОПОЛНИМ ТАБЛИЦУ MAIL ПОЛЕМ INCOME В КОТОРОМ БУДЕТ ИСПОЛЬЗОВАТЬСЯ DEFAULT (ЗНАЧЕНИЕ ПО УМОЛЧАНИЮ):
+ALTER TABLE mail ADD COLUMN income INT DEFAULT 0;
+
+
+# ЗАПОЛНИМ ТАБЛИЦУ MAIL ИНФОРМАЦИЕЙ:
+INSERT INTO mail VALUES (NULL, 'Andrey', 'Gorev', 'andgorev@gmail.com', 100000);
+
+
+# ЗАПОЛНИМ ТАБЛИЦУ MAIL ИНФОРМАЦИЕЙ И ЭКРАНИРОВАНИЕМ СИМВОЛОВ:
+INSERT INTO mail VALUES (NULL, 'Andr''ey', 'Gore''v', 'newmail@yandex.ru', 10000);
+
+
+# КАСТОМНОЕ ИМЯ СТОЛБЦА В ВЫВОДЕ SELECT:
+SELECT fname AS 'имя клиента' FROM mail;
+
