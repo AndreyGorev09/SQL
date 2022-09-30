@@ -1,2 +1,14 @@
 # ВНЕШНИЕ КЛЮЧИ И ВИДЫ СВЯЗЕЙ
 
+# СОЗДАДИМ БАЗУ ДАННЫХ CONTACTS_DB И ТАБЛИЦУ В НЕЙ CONTACS:
+CREATE DATABASE contacts_db;
+USE contacts_db;
+CREATE TABLE contacts (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(25) NOT NULL);
+DESC contacts;
+
+# ВСТАВЛЯЕМ ЗНАЧЕНИЯ В ТАБЛИЦУ CONTACTS:
+INSERT INTO contacts VALUE (NULL, 'Петр');
+INSERT INTO contacts VALUE (NULL, 'Женя');
+INSERT INTO contacts VALUE (NULL, 'Коля');
