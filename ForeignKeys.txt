@@ -8,7 +8,29 @@ CREATE TABLE contacts (
     name VARCHAR(25) NOT NULL);
 DESC contacts;
 
+
 # ВСТАВЛЯЕМ ЗНАЧЕНИЯ В ТАБЛИЦУ CONTACTS:
 INSERT INTO contacts VALUE (NULL, 'Петр');
 INSERT INTO contacts VALUE (NULL, 'Женя');
 INSERT INTO contacts VALUE (NULL, 'Коля');
+
+
+# ПРОВЕРЯЕМ НАШИ ВСТАВКИ В ТАБЛИЦУ CONTACTS:
+SELECT * FROM contacts;
+
+
+# СОЗДАЕМ ТАБЛИЦУ С ВНЕШНИМ КЛЮЧОМ FOREIGN KEY...REFERENCES...:
+CREATE TABLE activities (
+    act_id INT AUTO_INCREMENT PRIMARY KEY,
+    activity VARCHAR(25) NOT NULL,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES contacts (user_id));
+
+
+# ЗАПОЛНИМ ТАБЛИЦУ ACTIVITIES ИСПОЛЬЗУЯ ПОДЗАПРОСЫ В ПАРАМЕТРАХ:
+INSERT INTO activities VALUES (NULL, 'Собаки', (SELECT user_id FROM contacts WHERE name = 'Петр'));
+INSERT INTO activities VALUES (NULL, 'SQL', (SELECT user_id FROM contacts WHERE name = 'Женя'));
+INSERT INTO activities VALUES (NULL, 'Сайты', (SELECT user_id FROM contacts WHERE name = 'Коля'));
+
+
+
