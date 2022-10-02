@@ -1,0 +1,35 @@
+# СВЯЗИ ПОЛЕЙ ONE TO ONE(ОДИН К ОДНОМУ):
+SHOW DATABASES;
+USE contacts_db;
+
+# УДАЛИМ СТАРЫЕ ТАБЛИЦЫ ACTIVITIES И CONTACTS БАЗЫ ДАННЫХ CONTACTS_DB:
+DROP TABLE activities, contacts;
+SHOW TABLES;
+
+# СОЗДАЕМ ТАБЛИЦУ PERSONS:
+CREATE TABLE persons (
+    person_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL);
+
+# ЗАПОЛНИМ ТАБЛИЦУ PEERSONS ДАННЫМИ:
+INSERT INTO persons VALUES (NULL, 'Петр');
+INSERT INTO persons VALUES (NULL, 'Николай');
+INSERT INTO persons VALUES (NULL, 'Роман');
+
+SELECT * FROM persons;
+
+# СОЗДАДИМ ТАБЛИЦУ LOCATIONS:
+CREATE TABLE locations (
+    person_location_id INT PRIMARY KEY NOT NULL,
+    location_name VARCHAR(30),
+    FOREIGN KEY(person_location_id) REFERENCES persons(person_id));
+
+# ЗАПОЛНИМ ТАБЛИЦУ LOCATIONS ДАННЫМИ:
+INSERT INTO locations VALUES (1, 'Москва');
+INSERT INTO locations VALUES (2, 'Лондон');
+INSERT INTO locations VALUES (3, 'Новгород');
+
+SELECT * FROM locations;
+
+
+
