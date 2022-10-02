@@ -1,0 +1,61 @@
+# СВЯЗИ ПОЛЕЙ MANY TO MANY(МНОГИЕ КО МНОГИМ):
+SHOW DATABASES;
+USE contacts;
+SHOW TABLES;
+
+
+# УДАЛИМ СУЩЕСТВУЮЩИЕ ТАБЛИЦЫ В БАЗЕ ДАННЫХ CONTACTS:
+DROP TABLE users, jobs;
+SHOW TABLES;
+
+
+# СОЗДАЕМ ТАБЛИЦУ STUDENTS:
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_name VARCHAR(20) NOT NULL));
+
+
+# ЗАПОЛНИМ ТАБЛИЦУ STUDENTS ДАННЫМИ:
+INSERT INTO students VALUES (NULL, 'Петр');
+INSERT INTO students VALUES (NULL, 'Женя');
+INSERT INTO student VALUES (NULL, 'Коля');
+
+SELECT * FROM students;
+
+
+# СОЗДАДИМ ТАБЛИЦУ CLASSES:
+CREATE TABLE classes (
+    class_id INT AUTO_INCREMENT PRIMARY KEY,
+    class_name VARCHAR(20) NOT NULL);
+
+
+# ЗАПОЛНИМ ТАБЛИЦУ CLASSES ДАННЫМИ:
+INSERT INTO classes VALUES (NULL, '1Б');
+INSERT INTI classes VALUES (NULL, '2Б');
+INSERT INTO classes VALUES (NULL, '1А');
+
+SELECT * FROM classes;
+
+
+# СОЗДАМИМ ТАБЛИЦУ STUDENTS_CLASSES С ВНЕШНИМИ КЛЮЧАМИ:
+CREATE TABLE students_classes (
+    student_id INT NOT NULL,
+    class_id INT NOT NULL,
+    PRIMARY KEY(student_id, class_id),
+    FOREIGN KEY(student_id) REFERENCES students(student_id),
+    FOREIGN KEY(class_id) REFERENCES classes(class_id));
+
+
+# ЗАПОЛНИМ ТАБЛИЦУ STUDENTS_CLASSES ДАННЫМИ:
+INSERT INTO students_classes VALUES (1,2);
+INSERT INTO students_classes VALUES (2,2);
+INSERT INTO students_classes VALUES (3,1);
+
+SELECT * FROM students_classes;
+
+
+
+
+
+
+
