@@ -1,0 +1,45 @@
+# СОЕДИНЕНИЯ (JOIN):
+SHOW DATABASES;
+USE contacts_db;
+SHOW TABLES;
+
+
+# УДАЛИМ СУЩЕСТВУЮЩУЮ ПЕСОЧНИЦУ(ТАБЛИЦЫ STUDENTS, CLASSES, STUDENTS_CLASSES И БАЗУ ДАННЫХ CONTACTS_DB):
+DROP TABLE student, classes, students_classes;
+DROP DATABASE contacts_db;
+
+# СОЗДАДИМ НОВУЮ БАЗУ ДАННЫХ BOOKS_DB И ТАБЛИЦЫ PUBLISHERS И BOOKS:
+CREATE DATABASE books_db;
+SHOW DATABASES;
+USE books_db;
+CREATE TABLE publishers (
+    publisher_id INT AUTO_INCREMENT PRIMARY KEY,
+    publisher_name VARCHAR(30) NOT NULL);
+
+CREATE TABLE books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_name VARCHAR(30) NOT NULL,
+    fk_publisher_id INT,
+    FOREIGN KEY(fk_publisher_id) REFERENCES publishers(publisher_id));
+
+# ЗАПОЛНИМ ТАБЛИЦУ PUBLISHERS ДАННЫМИ:
+INSERT INTO publishers VALUES (NULL, 'Все книги');
+INSERT INTO publishers VALUES (NULL, 'Прокачай мозги');
+INSERT INTO publishers VALUES (NULL, 'Мир фантазий');
+SELECT * FROM publishers;
+
+
+# ЗАПОЛНИМ ТАБЛИЦУ BOOKS ДАННЫМИ:
+INSERT INTO books VALUES (NULL, 'Магия и кровь', 3);
+INSERT INTO books VALUES (NULL, 'Уникальная вселенная', NULL);
+INSERT INTO books VALUES (NULL, 'Физика просто', 2);
+INSERT INTO books VALUES (NULL, 'Рассказ о цветах', 1);
+SELECT * FROM books;
+
+
+# 1. ПЕРЕКРЕСТНОЕ СОЕДИНЕНИЕ (CROSS JOIN):
+SELECT b.book_name, p.publisher_name FROM books AS b CROSS JOIN publishers AS p;
+
+
+# 2. ЕСТЕСТВЕННОЕ СОЕДИНЕНИЕ (NATURAL JOIN):
+SELECT b.book_name, p.publisher_name FROM books AS b NATURAL JOIN publishers AS p;
