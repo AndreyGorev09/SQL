@@ -43,3 +43,29 @@ SELECT b.book_name, p.publisher_name FROM books AS b CROSS JOIN publishers AS p;
 
 # 2. ЕСТЕСТВЕННОЕ СОЕДИНЕНИЕ (NATURAL JOIN):
 SELECT b.book_name, p.publisher_name FROM books AS b NATURAL JOIN publishers AS p;
+
+
+# 3. ВНУТРЕННЕЕ СОЕДИНЕНИЕ (INNER JOIN):
+SELECT b.book_name, p.publisher_name FROM books AS b INNER JOIN publishers AS p ON b.book_id = p.publisher_id;
+SELECT b.book_name, p.publisher_name FROM books AS b INNER JOIN publishers AS p ON b.book_id != p.publisher_id;
+
+
+# 4. ЛЕВОЕ СОЕДИНЕНИЕ (LEFT JOIN):
+SELECT books.book_name, publishers.publisher_name FROM books LEFT JOIN publishers ON books.publisher_id = publishers.publisher_id;
+
+ИЛИ
+
+SELECT books.book_name, publishers.publisher_name FROM books LEFT JOIN publishers USING(publisher_id);
+
+
+# 5. ПРАВОЕ СОЕДИНЕНИЕ (RIGHT JOIN):
+SELECT books.book_name, publishers.publisher_name FROM books RIGHT JOIN publishers ON books.publisher_id = publishers.publisher_id;
+
+ИЛИ
+
+SELECT books.book_name, publishers.publisher_name FROM books RIGHT JOIN publishers USING(publisher_id);
+
+
+# ВЫВОДИМ ТОЛЬКО ТЕ ЗАПИСИ У КОТОРЫХ ЗНАЧЕНИЕ NULL:
+SELECT books.book_name, publishers.publisher_name FROM books LEFT JOIN publishers ON books.publisher_id = publishers.publisher_id WHERE books.publisher_id IS NULL;
+
