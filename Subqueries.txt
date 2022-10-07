@@ -1,1 +1,29 @@
 # ЕЩЕ ФИШКИ И ПОДЗАПРОСЫ:
+SHOW DATABASES;
+USE books_bd;
+SHOW TABLES;
+
+
+#  СОЗДАДИМ НОВУЮ ТАБЛИЦУ REVIEWS:
+CREATE TABLE reviews (
+    review_id INT PRIMARY KEY,
+    review_rank INT,
+    review_comment VARCHAR(50) NOT NULL DEFAULT 'Нет комментария');
+
+
+# ВСТАВИМ ДАННЫЕ В ТАБЛИЦУ REVIEWS ИСПОЛЬЗУЯ ПОДЗАПРОС:
+INSERT INTO reviews VALUES ((SELECT book_id FROM books WHERE book_name = 'Магия и кровь'), 8, 'Красочные битвы и хороший сюжет');
+INSERT INTO reviews VALUES ((SELECT book_id FROM books WHERE book_name = 'Уникальная вселенная'), 9, 'Невероятная книга, просто фантастика!');
+INSERT INTO reviews VALUES ((SELECT book_id FROM books WHERE book_name = 'Физика просто'), 3, 'Нифига не просто');
+INSERT INTO reviews VALUES ((SELECT book_id FROM books WHERE book_name = 'Рассказ о цветах'), 5, 'Ну средненько так');
+
+SELECT * FROM reviews;
+
+
+# ВЫВОДИМ СОЕДИНЕНИЕ ИЗ ТРЕХ ТАБЛИЦ BOOKS, PUBLISHERS, REVIEWS:
+SELECT b.book_name AS Книга, r.review_rank AS Оценка, r.review_comment AS Комментарий, p.publisher_name AS Издатель
+FROM books AS b NATURAL JOIN publishers AS p INNER JOIN reviews AS r ON b.book_id = r.review_id;
+
+SELECT b.book_name AS Книга, r.review_rank AS Оценка, r.review_comment AS Комментарий, p.publisher_name AS Издатель
+FROM books AS b NATURAL JOIN publishers AS p INNER JOIN reviews AS r ON b.book_id = r.review_id WHERE r.review_rank < 5;
+
