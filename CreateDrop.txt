@@ -1,16 +1,16 @@
-ПРОСМОТР СПИСКА БАЗ ДАННЫХ:
+/* ПРОСМОТР СПИСКА БАЗ ДАННЫХ: */
 SHOW DATABASES;
 
 
-СОЗДАНИЕ БАЗЫ ДАННЫХ:
+/* СОЗДАНИЕ БАЗЫ ДАННЫХ: */
 CREATE DATABASE test;
 
 
-ОБОЗНАЧЕНИЕ ИСПОЛЬЗОВАНИЕ ДАННОЙ БАЗЫ ДАННЫХ:
+/* ОБОЗНАЧЕНИЕ ИСПОЛЬЗОВАНИЕ ДАННОЙ БАЗЫ ДАННЫХ: */
 USE test;
 
 
-СОЗДАНИЕ ТАБЛИЦЫ:
+/* СОЗДАНИЕ ТАБЛИЦЫ: */
 CREATE TABLE client (
     id INT,
     fname VARCHAR(30),
@@ -19,11 +19,11 @@ CREATE TABLE client (
     );
 
 
-ПРОСМОТР СТРУКТУРЫ ТАБЛИЦЫ:
+/* ПРОСМОТР СТРУКТУРЫ ТАБЛИЦЫ: */
 DESC client;
 
 
-ЗАПИСЬ В ТАБЛИЦУ:
+/* ЗАПИСЬ В ТАБЛИЦУ: */
 INSERT INTO client VALUES (
     0,
     'full_fname',
@@ -31,7 +31,7 @@ INSERT INTO client VALUES (
     'test@gmail.com'
     );
 
-ИЛИ ТАКИМ СПОСОБОМ
+/* ИЛИ ТАКИМ СПОСОБОМ */
 
 INSERT INTO client (fname, email) VALUES (
     'robert',
@@ -39,19 +39,19 @@ INSERT INTO client (fname, email) VALUES (
     );
 
 
-ПРОСМОТР ТАБЛИЦЫ:
+/* ПРОСМОТР ТАБЛИЦЫ: */
 SELECT * FROM client;
 
 
-УДАЛЕНИЕ ТАБЛИЦЫ:
+/* УДАЛЕНИЕ ТАБЛИЦЫ: */
 DROP TABLE client;
 
 
-УДАЛЕНИЕ БАЗЫ ДАННЫХ:
+/* УДАЛЕНИЕ БАЗЫ ДАННЫХ: */
 DROP DATABASE test;
 
 
-ПРОСМОТР СПИСКА ТАБЛИЦ:
+/* ПРОСМОТР СПИСКА ТАБЛИЦ: */
 SHOW TABLES;
 
 

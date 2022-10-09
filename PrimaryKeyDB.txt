@@ -1,19 +1,11 @@
 SHOW DATABASES;
-
-
 USE test;
-
-
 SHOW TABLES;
-
-
 SELECT * FROM products;
-
-
 DROP TABLE products;
 
 
-ДОБАВЛЕНИЕ ПЕРВИЧНОГО КЛЮЧА В НОВУЮ ТАБЛИЦУ:
+/* ДОБАВЛЕНИЕ ПЕРВИЧНОГО КЛЮЧА В НОВУЮ ТАБЛИЦУ: */
 CREATE TABLE products (
     id INT AUTO_INCREMENT,
     name VARCHAR(50),
@@ -33,7 +25,7 @@ INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Diary', 'Dicsi', 4
 INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Bread', 'Perecrestok', 20, 9 );
 INSERT INTO products (name, shop_name, price, rate) VALUES ( 'Cheese', 'Perecrestok', 59, 3 );
 
-ИЛИ МОЖНО ДРУГИМ СПОСОБОМ:
+-- ИЛИ МОЖНО ДРУГИМ СПОСОБОМ:
 
 INSERT INTO products VALUES (NULL, 'Apples', 'Dicsi', 49, 7);
 INSERT INTO products VALUES (NULL, 'Pie', 'Perecrestok', 76, 9 );
@@ -49,7 +41,7 @@ INSERT INTO products VALUES (NULL, 'Cheese', 'Perecrestok', 59, 3 );
 SELECT * FROM products;
 
 
-ДОБАВЛЕНИЕ ПЕРВИЧНОГО КЛЮЧА В СУЩЕСТВУЮЩУЮ ТАБЛИЦУ:
+/* ДОБАВЛЕНИЕ ПЕРВИЧНОГО КЛЮЧА В СУЩЕСТВУЮЩУЮ ТАБЛИЦУ: */
 SHOW TABLES;
 SELECT * FROM movies;
 ALTER TABLE movies

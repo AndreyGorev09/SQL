@@ -1,24 +1,26 @@
-ПЕРЕХОДИМ В УЖЕ СУЩЕСТВУЮЩУЮ БАЗУ ДАННЫХ TEST:
+/* ПЕРЕХОДИМ В УЖЕ СУЩЕСТВУЮЩУЮ БАЗУ ДАННЫХ TEST: */
 SHOW DATABASES;
 USE test;
 
 
-СОЗДАЕМ НОВУЮ ТАБЛИЦУ USERS ДЛЯ ПЕСОЧНИЦЫ:
+/* СОЗДАЕМ НОВУЮ ТАБЛИЦУ USERS ДЛЯ ПЕСОЧНИЦЫ: */
 CREATE TABLE users (name VARCHAR(30));
 DESC users;
 SELECT * FROM users;
 
 
-ДОБАВИМ В ТАБЛИЦУ USER ПОЛЕ ID С PRIMARY KEY:
+/* ДОБАВИМ В ТАБЛИЦУ USER ПОЛЕ ID С PRIMARY KEY:
+СУЩЕСТВУЮТ РАЗНЫЕ АТРИБУТЫ РАСПОЛОЖЕНИЯ ПОЛЯ:
+1. FIRST - ПЕРВАЯ ПОЗИЦИЯ В ТАБЛИЦЕ;
+2. AFTER имя поля - ПОСЛЕ УКУЗАННОГО ПОЛЯ;
+3. ИЛИ ПО НУМЕРАЦИИ НА АНГЛИЙСКОМ ЯЗЫКЕ: SECOND, TWO И Т.Д. */
+
 ALTER TABLE users
-    ADD COLUMN id INT AUTO_INCREMENT FIRST,        СУЩЕСТВУЮТ РАЗНЫЕ АТРИБУТЫ РАСПОЛОЖЕНИЯ ПОЛЯ:
-                                                   1. FIRST - ПЕРВАЯ ПОЗИЦИЯ В ТАБЛИЦЕ;
-                                                   2. AFTER имя поля - ПОСЛЕ УКУЗАННОГО ПОЛЯ;
-                                                   3. ИЛИ ПО НУМЕРАЦИИ НА АНГЛИЙСКОМ ЯЗЫКЕ: SECOND, TWO И Т.Д.
+    ADD COLUMN id INT AUTO_INCREMENT FIRST,
     ADD PRIMARY KEY(id);
 
 
-ДОБАВИМ В ТАБЛИЦУ USER ПОЛЕ TEST ПОСЛЕ ПОЛЯ ID:
+/* ДОБАВИМ В ТАБЛИЦУ USER ПОЛЕ TEST ПОСЛЕ ПОЛЯ ID: */
 ALTER TABLE users ADD COLUMN test VARCHAR(10) AFTER id;
 
 
@@ -26,7 +28,7 @@ ALTER TABLE users ADD COLUMN test VARCHAR(10) AFTER id;
 ALTER TABLE users DROP COLUMN test;
 
 
-ИЗМЕНЯЕМ ИМЯ ТАБЛИЦЫ USERS НА ДРУГОЕ ИМЯ TESTUSERS И ОБРАТНО:
+/* ИЗМЕНЯЕМ ИМЯ ТАБЛИЦЫ USERS НА ДРУГОЕ ИМЯ TESTUSERS И ОБРАТНО: */
 SHOW TABLES;
 ALTER TABLE users RENAME TO testusers;
 SHOW TABLES;
@@ -34,21 +36,21 @@ ALTER TABLE testusers RENAME TO users;
 SHOW TABLES;
 
 
-ИЗМЕНЯЕМ ИМЯ И АТРИБУТЫ ПОЛЯ NAME В ТАБЛИЦЕ USERS:
+/* ИЗМЕНЯЕМ ИМЯ И АТРИБУТЫ ПОЛЯ NAME В ТАБЛИЦЕ USERS: */
 DESC users;
 ALTER TABLE users CHANGE COLUMN name new_name VARCHAR(15) NOT NULL;
 DESC users;
 
-ИЗМЕНЯЕМ АТРИБУТЫ ПОЛЕ NAME БЕЗ ИЗМЕНЕНИЯ ИМЕНИ ПОЛЯ В ТАБЛИЦЕ USERS:
+/* ИЗМЕНЯЕМ АТРИБУТЫ ПОЛЕ NAME БЕЗ ИЗМЕНЕНИЯ ИМЕНИ ПОЛЯ В ТАБЛИЦЕ USERS: */
 DESC users;
 ALTER TABLE users MODIFY COLUMN new_name VARCHAR(30) NULL;
 DESC users;
 
-УДАЛЯЕМ ПОЛЕ ID ИЗ ТАБЛИЦЫ USERS:
+/* УДАЛЯЕМ ПОЛЕ ID ИЗ ТАБЛИЦЫ USERS: */
 ALTER TABLE users DROP COLUMN id;
 
 
-СОЗДАЕМ СОСТАВНОЙ ЗАПРОС ПО ТЕМЕ:
+/* СОЗДАЕМ СОСТАВНОЙ ЗАПРОС ПО ТЕМЕ: */
 ALTER TABLE users
     ADD COLUMN id INT AUTO_INCREMENT FIRST,
     ADD PRIMARY KEY(id),

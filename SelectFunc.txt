@@ -1,9 +1,9 @@
-# ФУНКЦИИ ДЛОЯ РАБОТЫ С ЧИСЛАМИ:
+/* ФУНКЦИИ ДЛОЯ РАБОТЫ С ЧИСЛАМИ: */
 SHOW DATABASES;
 USE test;
 
 
-# СОЗДАДИМ НОВУЮ ТАБЛИЦУ SALES:
+/* СОЗДАДИМ НОВУЮ ТАБЛИЦУ SALES: */
 CREATE TABLE sales
     (id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     fnames_list VARCHAR(20) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE sales
     price INT NOT NULL);
 
 
-# ЗАПОЛНИМ ТАБЛИЦУ SALES ДАННЫМИ:
+/* ЗАПОЛНИМ ТАБЛИЦУ SALES ДАННЫМИ: */
 INSERT INTO sales VALUES (NULL, 'Петр', 'Радько', 'Хлеб', 16);
 INSERT INTO sales VALUES (NULL, 'Петр', 'Радько', 'Нарезной хлеб', 25);
 INSERT INTO sales VALUES (NULL, 'Петр', 'Радько', 'Молоко', 40);
@@ -25,11 +25,11 @@ INSERT INTO sales VALUES (NULL, 'Аня', 'Комарова', 'Торт', 120);
 INSERT INTO sales VALUES (NULL, 'Аня', 'Комарова', 'Жвачка', 22);
 
 
-# ФУНКЦИЯ SUM ВЫВОДИТ СУММУ ВСЕХ ЧИСЕЛ ПОЛЯ(ЕЙ):
+/* ФУНКЦИЯ SUM ВЫВОДИТ СУММУ ВСЕХ ЧИСЕЛ ПОЛЯ(ЕЙ): */
 SELECT SUM(price) FROM sales;
 
 
-# ФУНКЦИЯ NIN/MAX ВЫВОДИТ МИНИМАЛЬНОЕ.МАКСИМАЛЬНОЕ ЧИСЛО ИЗ ПОЛЯ(ЕЙ):
+/* ФУНКЦИЯ NIN/MAX ВЫВОДИТ МИНИМАЛЬНОЕ.МАКСИМАЛЬНОЕ ЧИСЛО ИЗ ПОЛЯ(ЕЙ): */
 SELECT s_product, MIN(price) FROM sales;
 SELECT s_product, MAX(price) FROM sales;
 
@@ -37,27 +37,27 @@ SELECT * FROM sales WHERE price = (SELECT MAX(price) FROM sales);
 SELECT * FROM sales WHERE price = (SELECT MIN(price) FROM sales);
 
 
-# ФУНКЦИЯ COUNT ВЫВОДИТ КОЛИЧЕСТВО ЗАПИСЕЙ ПОЛЯ(ПОЛЕЙ).
-  ЕСЛИ ЗНАЧЕНИЕ ПОЛЯ NULL ТО ЗАПИСЬ НЕ БУДЕТ ВКЛЮЧАТЬСЯ В ВЫВОД:
+/* ФУНКЦИЯ COUNT ВЫВОДИТ КОЛИЧЕСТВО ЗАПИСЕЙ ПОЛЯ(ПОЛЕЙ).
+  ЕСЛИ ЗНАЧЕНИЕ ПОЛЯ NULL ТО ЗАПИСЬ НЕ БУДЕТ ВКЛЮЧАТЬСЯ В ВЫВОД: */
 
 SELECT COUNT(price) FROM sales;
 
-# ФУНКЦИЯ AVG ВЫВОДИТ СРЕДНЕЕ АРИФМИТИЧЕСКОЕ ЧИСЛО:
+/* ФУНКЦИЯ AVG ВЫВОДИТ СРЕДНЕЕ АРИФМИТИЧЕСКОЕ ЧИСЛО: */
 SELECT AVG(price) FROM sales;
 
 
-# ГРУППИРУЕТ ВЫВОД SELECT В С ПОМОЩЬЮ ОПЕРАТОРА GROUP BY:
+/* ГРУППИРУЕТ ВЫВОД SELECT В С ПОМОЩЬЮ ОПЕРАТОРА GROUP BY: */
 SELECT fnames_list, SUM(price) FROM sales GROUP BY fnames_list;
 SELECT fnames_list, MAX(price) FROM sales GROUP BY fnames_list;
 SELECT fnames_list, MIN(price) FROM sales GROUP BY fnames_list;
 
 
-# ОПЕРАТОР DISTINCT СОЗДАЕТ ВЫВОД SELECT НЕ СОДЕРЖАЩИЙ ДУБЛИКАТОВ:
+/* ОПЕРАТОР DISTINCT СОЗДАЕТ ВЫВОД SELECT НЕ СОДЕРЖАЩИЙ ДУБЛИКАТОВ: */
 SELECT DISTINCT(fnames_list) FROM sales;
 
 
-# ОПЕРАТОР LIMIT СОЗДАЕТ ВЫВОД SELECT ЗАПИСЕЙ ЧЕРЕЗ НОМЕРА ЗАПИСЕЙ В ПОЛЕ ИЛИ ИНДЕКСОВ ЗАПИСЕЙ ПОЛЯ:
-# СОЗДАДИТ ВЫВОД SELECT В ОТСОРТИРОВАННОМ ПОРЯДКЕ С КОНЦА ПО ПОЛЮ PRICE:
+/* ОПЕРАТОР LIMIT СОЗДАЕТ ВЫВОД SELECT ЗАПИСЕЙ ЧЕРЕЗ НОМЕРА ЗАПИСЕЙ В ПОЛЕ ИЛИ ИНДЕКСОВ ЗАПИСЕЙ ПОЛЯ: */
+/* СОЗДАДИТ ВЫВОД SELECT В ОТСОРТИРОВАННОМ ПОРЯДКЕ С КОНЦА ПО ПОЛЮ PRICE: */
 SELECT * FROM sales ORDER BY price DESC;
 
 # ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО НОМЕРУ ЗАПИСИ В ПОЛЕ(ВЫВЕДЕТ ОДНУ ЗАПИСЬ):
@@ -66,10 +66,10 @@ SELECT * FROM sales ORDER BY price DESC LIMIT 1;
 SELECT * FROM sales ORDER BY price DESC LIMIT 2;
 
 
-# ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО ИНДЕКСУ ЗАПИСЕЙ В ПОЛЕ(ВЫВЕДЕТ ДВЕ ЗАПИСИ):
+/* ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО ИНДЕКСУ ЗАПИСЕЙ В ПОЛЕ(ВЫВЕДЕТ ДВЕ ЗАПИСИ): */
 SELECT * FROM sales ORDER BY price DESC LIMIT 0, 2;
 
-# ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО ИНДЕКСУ ЗАПИСЕЙ В ПОЛЕ(ВЫВЕДЕТ ТРИ ЗАПИСИ):
+/* ВЫВЕДЕМ КОЛИЧЕСТВО ЗАПИСЕЙ ПО ИНДЕКСУ ЗАПИСЕЙ В ПОЛЕ(ВЫВЕДЕТ ТРИ ЗАПИСИ): */
 SELECT * FROM sales ORDER BY price DESC LIMIT 0, 3;
 
 

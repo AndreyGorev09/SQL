@@ -1,19 +1,19 @@
-ФУНКЦИИ ДЛЯ РАБОТЫ СО СТРОКАМИ:
+/* ФУНКЦИИ ДЛЯ РАБОТЫ СО СТРОКАМИ: */
 SHOW DATABASES;
 USE test;
 SHOW TABLES;
 SELECT * FROM listUsers;
 
 
-ФУНКЦИЯ ПЕРЕОПРЕДЕЛЯЕТ НИЖНИЙ РЕГИСТР СТРОК В ВЕРХНИЙ:
+/* ФУНКЦИЯ ПЕРЕОПРЕДЕЛЯЕТ НИЖНИЙ РЕГИСТР СТРОК В ВЕРХНИЙ: */
 SELECT UPPER(first_name) FROM listUsers;
 
 
-ФУНКЦИЯ ПЕРЕОПРЕДЕЛЯЕТ ВЕРХНИЙ РЕГИСТР СТРОК В НИЖНИЙ:
+/* ФУНКЦИЯ ПЕРЕОПРЕДЕЛЯЕТ ВЕРХНИЙ РЕГИСТР СТРОК В НИЖНИЙ: */
 SELECT LOWER(last_name) FROM listUsers;
 
 
-ДЕЛАЕМ НЕКОТОРЫЕ ПРАВКИ ТАБЛИЦЫ:
+/* ДЕЛАЕМ НЕКОТОРЫЕ ПРАВКИ ТАБЛИЦЫ: */
 ALTER TABLE listUsers
     ADD COLUMN list_names VARCHAR(30) NOT NULL AFTER id,
     DROP COLUMN first_name,
@@ -23,23 +23,23 @@ ALTER TABLE listUsers
     RENAME TO users;
 
 
-ФУНКЦИЯ ВОЗВРОЩАЕТ ВСЕ СИМВОЛЫ ДО РАЗДЕЛИТЕЛЯ:
+/* ФУНКЦИЯ ВОЗВРОЩАЕТ ВСЕ СИМВОЛЫ ДО РАЗДЕЛИТЕЛЯ: */
 UPDATE users SET first_name = SUBSTRING_INDEX(list_names, ' ', 1);
 UPDATE users SET last_name = SUBSTRING_INDEX(list_names, ' ', -1);
 
 
-ДЕЛАЕМ НЕКОТОРЫЕ ПРАВКИ ТАБЛИЦЫ:
+/* ДЕЛАЕМ НЕКОТОРЫЕ ПРАВКИ ТАБЛИЦЫ: */
 ALTER TABLE users DROP COLUMN list_names;
 
 
-ФУНКЦИЯ ВОЗВРАЩАЕТ СИМВОЛЫ В ЗАДАНОМ КОЛИЧЕСТВЕ СЛЕВА/СПРАВА ОТ ЗНАЧЕНИЯ В ПОЛЕ:
+/* ФУНКЦИЯ ВОЗВРАЩАЕТ СИМВОЛЫ В ЗАДАНОМ КОЛИЧЕСТВЕ СЛЕВА/СПРАВА ОТ ЗНАЧЕНИЯ В ПОЛЕ: */
 SELECT LEFT(first_name, 3) FROM users;
 SELECT RIGHT(last_name, 2) FROM users;
 
 SELECT * FROM users;
 
 
-ФУНКЦИИ УДАЛЯЮТ ПРОБЕЛЫ СЛЕВА/СПАРАВА:
+/* ФУНКЦИИ УДАЛЯЮТ ПРОБЕЛЫ СЛЕВА/СПАРАВА: */
 LTRIM(поле)/RTRIM(поле)
 
 

@@ -1,6 +1,6 @@
-# ВНЕШНИЕ КЛЮЧИ И ВИДЫ СВЯЗЕЙ
+/*  ВНЕШНИЕ КЛЮЧИ И ВИДЫ СВЯЗЕЙ */
 
-# СОЗДАДИМ БАЗУ ДАННЫХ CONTACTS_DB И ТАБЛИЦУ В НЕЙ CONTACS:
+/* СОЗДАДИМ БАЗУ ДАННЫХ CONTACTS_DB И ТАБЛИЦУ В НЕЙ CONTACS: */
 CREATE DATABASE contacts_db;
 USE contacts_db;
 CREATE TABLE contacts (
@@ -9,17 +9,17 @@ CREATE TABLE contacts (
 DESC contacts;
 
 
-# ВСТАВЛЯЕМ ЗНАЧЕНИЯ В ТАБЛИЦУ CONTACTS:
+/* ВСТАВЛЯЕМ ЗНАЧЕНИЯ В ТАБЛИЦУ CONTACTS: */
 INSERT INTO contacts VALUE (NULL, 'Петр');
 INSERT INTO contacts VALUE (NULL, 'Женя');
 INSERT INTO contacts VALUE (NULL, 'Коля');
 
 
-# ПРОВЕРЯЕМ НАШИ ВСТАВКИ В ТАБЛИЦУ CONTACTS:
+/* ПРОВЕРЯЕМ НАШИ ВСТАВКИ В ТАБЛИЦУ CONTACTS: */
 SELECT * FROM contacts;
 
 
-# СОЗДАЕМ ТАБЛИЦУ С ВНЕШНИМ КЛЮЧОМ FOREIGN KEY...REFERENCES...:
+/* СОЗДАЕМ ТАБЛИЦУ С ВНЕШНИМ КЛЮЧОМ FOREIGN KEY...REFERENCES...: */
 CREATE TABLE activities (
     act_id INT AUTO_INCREMENT PRIMARY KEY,
     activity VARCHAR(25) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE activities (
     FOREIGN KEY (user_id) REFERENCES contacts (user_id));
 
 
-# ЗАПОЛНИМ ТАБЛИЦУ ACTIVITIES ИСПОЛЬЗУЯ ПОДЗАПРОСЫ В ПАРАМЕТРАХ:
+/* ЗАПОЛНИМ ТАБЛИЦУ ACTIVITIES ИСПОЛЬЗУЯ ПОДЗАПРОСЫ В ПАРАМЕТРАХ: */
 INSERT INTO activities VALUES (NULL, 'Собаки', (SELECT user_id FROM contacts WHERE name = 'Петр'));
 INSERT INTO activities VALUES (NULL, 'SQL', (SELECT user_id FROM contacts WHERE name = 'Женя'));
 INSERT INTO activities VALUES (NULL, 'Сайты', (SELECT user_id FROM contacts WHERE name = 'Коля'));

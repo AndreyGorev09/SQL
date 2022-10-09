@@ -1,27 +1,27 @@
-# СВЯЗИ ПОЛЕЙ ONE TO MANY(ОДИН КО МНОГИМ):
+/* СВЯЗИ ПОЛЕЙ ONE TO MANY(ОДИН КО МНОГИМ): */
 SHOW DATABASES;
 USE contacts_db;
 SHOW TABLES;
 
 
-# УДАЛЯЕМ СУЩЕСТВУЮЩИЕ ТАБЛИЦЫ PERSONS И LOCATIONS:
+/* УДАЛЯЕМ СУЩЕСТВУЮЩИЕ ТАБЛИЦЫ PERSONS И LOCATIONS: */
 DROP TABLE persons, locations;
 SHOW TABLES;
 
 
-# СОЗДАЕМ ТАБЛИЦУ JOBS:
+/* СОЗДАЕМ ТАБЛИЦУ JOBS: */
 CREATE TABLE jobs (
     job_id INT AUTO_INCREMENT PRIMARY KEY,
     job_name VARCHAR(30) NOT NULL);
 
 
-# ЗАПОЛНИМ ТАБЛИЦУ JOBS ДАННЫМИ:
+/* ЗАПОЛНИМ ТАБЛИЦУ JOBS ДАННЫМИ: */
 INSERT INTO jobs VALUES (NULL, 'Маляр');
 INSERT INTO jobs VALUES (NULL, 'Кодер');
 INSERT INTO jobs VALUES (NULL, 'Уборщик');
 
 
-# СОЗДАЕМ ТАБЛИЦУ USERS С ВНЕШНИМ КЛЮЧЕМ:
+/* СОЗДАЕМ ТАБЛИЦУ USERS С ВНЕШНИМ КЛЮЧЕМ: */
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE users (
     FOREIGN KEY(job_id) REFERENCES jobs(job_id));
 
 
-# ЗАПОЛНИМ ТАБЛИЦУ USERS ДАННЫМИ:
+/* ЗАПОЛНИМ ТАБЛИЦУ USERS ДАННЫМИ: */
 INSERT INTO users VALUES (NULL, 'Петр', (SELECT job_id FROM jobs WHERE job_name = 'Кодер'));
 INSERT INTO users VALUES (NULL, 'Женя', (SELECT job_id FROM jobs WHERE job_name = 'Маляр'));
 INSERT INTO users VALUES (NULL, 'Коля', (SELECT job_id FROM jobs WHERE job_name = 'Маляр'));

@@ -1,18 +1,18 @@
-# НАЧИНАЕМ РАБОТУ С СУЩЕСТВУЮЩЕЙ ТАБЛИЦЕЙ USERS:
+/* НАЧИНАЕМ РАБОТУ С СУЩЕСТВУЮЩЕЙ ТАБЛИЦЕЙ USERS: */
 SHOW DATABASES;
 USE test;
 SELECT * FROM users;
 
 
-# МОДИФИЦИРУЕМ ТАБЛИЦУ USERS:
+/* МОДИФИЦИРУЕМ ТАБЛИЦУ USERS: */
 
-# СОЗДАДИМ ДВЕ КОЛОНКИ В ТАБЛИЦЕ USERS:
+/* СОЗДАДИМ ДВЕ КОЛОНКИ В ТАБЛИЦЕ USERS: */
 ALTER TABLE users
     ADD COLUMN reputation INT,
     ADD COLUMN ranks VARCHAR(20) NOT NULL;
 
 
-# ДОБАВИМ ЗАПИСИ В КОЛОНКУ REPUTATION ТАБЛИЦЫ USERS:
+/* ДОБАВИМ ЗАПИСИ В КОЛОНКУ REPUTATION ТАБЛИЦЫ USERS: */
 UPDATE users SET reputation = 500 WHERE ID = 1;
 UPDATE users SET reputation = 324 WHERE ID = 2;
 UPDATE users SET reputation = 21 WHERE ID = 3;
@@ -21,7 +21,7 @@ UPDATE users SET reputation = 2 WHERE ID = 5;
 
 SELECT * FROM users;
 
-# ЗАПОЛНИМ ПОЛЕ RANKS ЧЕРЕЗ КОНСТРУКЦИЮ CASE WHEN УСЛОВИЕ THEN ЗНАЧЕНИЕ END:
+/* ЗАПОЛНИМ ПОЛЕ RANKS ЧЕРЕЗ КОНСТРУКЦИЮ CASE WHEN УСЛОВИЕ THEN ЗНАЧЕНИЕ END: */
 UPDATE users SET ranks = CASE
     WHEN reputation > 350 THEN 'ЭЛИТА'
     WHEN reputation > 100 THEN 'ПОПУЛЯРНЫЙ'
@@ -30,12 +30,12 @@ UPDATE users SET ranks = CASE
     ELSE 'НУБ'
     END;
 
-# ОПЕРЕАТОР ORDER BY ВЫВОДИТ РЕЗУЛЬТАТ В АЛФОВИТНОМ ПОРЯДКЕ ASC:
+/* ОПЕРЕАТОР ORDER BY ВЫВОДИТ РЕЗУЛЬТАТ В АЛФОВИТНОМ ПОРЯДКЕ ASC: */
 SELECT first_name, reputation, ranks FROM users ORDER BY first_name ASC;
 SELECT * FROM users ORDER BY reputation;
 
 
-# ОПЕРЕАТОР ORDER BY ВЫВОДИТ РЕЗУЛЬТАТ В ОБРАТНОМ ПОРЯДКЕ(С КОНЦА В НВЧАЛО) DESC:
+/* ОПЕРЕАТОР ORDER BY ВЫВОДИТ РЕЗУЛЬТАТ В ОБРАТНОМ ПОРЯДКЕ(С КОНЦА В НВЧАЛО) DESC: */
 SELECT first_name, reputation, ranks FROM users ORDER BY first_name DESC;
 SELECT * FROM users ORDER BY reputation DESC;
 
