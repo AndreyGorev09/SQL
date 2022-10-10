@@ -1,0 +1,84 @@
+/* НОРМАЛЬНЫЕ ФОРМЫ: 1-Я НОРМАЛЬНАЯ ФОРМА, 2-Я НОРМАЛЬНАЯ ФОРМА, 3-Я НОРМАЛЬНАЯ ФОРМА. */
+
+/* СОЗДАДИМ НОВУЮ БАЗУ ДАННЫХ USERS: */
+SHOW DATABASES;
+CREATE DATABASE users_db;
+USE users_db;
+
+
+/* СОЗДАДИМ СВЯЗИ ТАБЛИЦ USERS И INTERESTS ПО 1-ОЙ НОРМАЛЬНОЙ ФОРМЕ(ВСЕ ДАННЫЕ АТОМАРНЫ): */
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL);
+
+INSERT INTO users VALUES (NULL, 'Петр');
+INSERT INTO users VALUES (NULL, 'Коля');
+INSERT INTO users VALUES (NULL, 'Роман');
+
+SELECT * FROM users;
+
+CREATE TABLE interests (
+    interest_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    user_id INT REFERENCES users(user_id));
+
+INSERT INTO interests VALUES (NULL, 'Собаки', 1);
+INSERT INTO interests VALUES (NULL, 'SQL', 1);
+INSERT INTO interests VALUES (NULL, 'Кошки', 2);
+INSERT INTO interests VALUES (NULL, 'Музыка', 3);
+
+SELECT * FROM interests;
+
+/* ОБЪЕДИНИМ ТАБЛИЦЫ USERS И INTERESTS ПРИ ПОМОЩИ INNER JOIN:*/
+
+SELECT u.name, i.name FROM users AS u INNER JOIN interests AS i ON u.user_id = i.user_id;
+
+
+/* СОЗДАДИМ СВЯЗИ ТАБЛИЦ ... И ... ПО 2-ОЙ И 3-Й НОРМАЛЬНОЙ ФОРМЕ(ЧАСТИЧНАЯ ФУНКЦИОНАЛЬНАЯ ЗАВИСИМОСТЬ И
+ ОТСУТСТВИЕ ТРАНЗИТИВНЫХ ФУНКЦИОНАЛЬНЫХ ЗАВИСИМОСТЕЙ): */
+
+SHOW DATABASES;
+CREATE DATABASE super_heroes_db;
+USE super_heroes_db;
+CREATE TABLE super_heroes (
+    sh_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    power VARCHAR(15) NOT NULL);
+
+
+CREATE TABLE inicials (
+    sh_id INT PRIMARY KEY,
+    inicial VARCHAR(5) NOT NULL,
+    FOREIGN KEY(sh_id) REFERENCES super_heroes(sh_id));
+
+
+CREATE TABLE enemies (
+    enemy_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    city VARCHAR(15) NOT NULL);
+
+ALTER TABLE super_heroes
+    ADD COLUMN enemy_id INT REFERENCES enemies(enemy_id);
+
+
+INSERT INTO super_heroes VALUES (NULL, 'Супер-Турник', 'Мускулы', NULL);
+INSERT INTO super_heroes VALUES (NULL, 'Бэтмен', 'Гаджиты', NULL);
+
+INSERT INTO inicials VALUES (1, 'С.Т');
+INSERT INTO inicials VALUES (2, 'Бэт');
+
+INSERT INTO enemies VALUES (NULL, 'Ленивец', 'Москва');
+INSERT INTO enemies VALUES (NULL, 'Халява', 'Питер');
+
+UPDATE super_heroes SET enemy_id = 1 WHERE sh_id = 1;
+UPDATE super_heroes SET enemy_id = 2 WHERE sh_id = 2;
+
+SELECT * FROM super_heroes;
+SELECT * FROM inicials;
+SELECT * FROM enemies;
+
+SELECT sh.name, sh.power, i.inicial, e.name, e.city
+    FROM super_heroes AS sh INNER JOIN inicials AS i
+    ON sh.sh_id = i.sh_id
+    INNER JOIN enemies AS e
+    ON sh.enemy_id = e.enemy_id;
