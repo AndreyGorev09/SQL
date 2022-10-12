@@ -1,0 +1,48 @@
+/* ПРЕДСТАВЛЕНИЯ */
+/* СОЗДАДИМ ПЕСОЧНИЦУ ДЛЯ НАПИСАНИЯ ПРЕДСТАВЛЕНИЙ */
+SHOW DATABASES;
+CREATE DATABASE people_db;
+USE people_db;
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    fname VARCHAR(20) NOT NULL,
+    lname VARCHAR(20),
+    email VARCHAR(30) NOT NULL UNIQUE);
+
+INSERT INTO users VALUES (NULL, 'Андрей', 'Горев', 'my@mail.ru');
+INSERT INTO users VALUES (NULL, 'Роман', 'Бондаренко', 'bond@mail.com');
+INSERT INTO users VALUES (NULL, 'Евгений', 'Оливье', 'evgeni@yandex.ru');
+
+
+CREATE TABLE private_inf (
+    private_id INT PRIMARY KEY,
+    income INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (private_id) REFERENCES users(user_id));
+
+INSERT INTO private_inf VALUES (1, 20000);
+INSERT INTO private_inf VALUES (2, 19000);
+INSERT INTO private_inf VALUES (3, 100);
+
+/* ВЫВЕДИМ ПРОИЗВОЛЬНЫЙ ЗАПРОС */
+SELECT u.fname, u.lname, p.income
+FROM users AS u INNER JOIN private_inf AS p
+ON u.user_id = p.private_id
+WHERE p.income > (SELECT AVG(income) FROM private_inf);
+
+
+/* СОЗДАЕМ ПРЕДСТАВЛЕНИЕ НА ЗАПРОС ВЫШЕ */
+CREATE VIEW maxIncom AS SELECT u.fname, u.lname, p.income
+FROM users AS u INNER JOIN private_inf AS p
+ON u.user_id = p.private_id
+WHERE p.income > (SELECT AVG(income) FROM private_inf);
+
+
+/* ВЫВОДИМ СОЗДАННОЕ ПРЕДСТАВЛЕНИЕ */
+SELECT * FROM maxIncome;
+
+/* УДАЛЕНИЕ ПРЕДСТАВЛЕНИЯ */
+DROP VIEW maxIncome;
+
+/* ПРОБУЯ ВЫВЕСТИ ПРЕДСТАВЛЕНИЕ ПОЛУЧИМ ОШИБКУ DOESNT EXIST */
+SELECT * FROM maxIncome;
