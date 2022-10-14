@@ -1,0 +1,19 @@
+/* SELECT - 3 ФУНДАМЕНТАЛЬНЫЕ КОНЦЕПЦИИ */
+
+1. PROJECTION - ВЫБОР СТОЛБЦОВ ИЗ ТАБЛИЦЫ:
+SELECT имя_столбца_1, имя_столбца_2, имя_столбца_3 и т.д. FROM имя_таблицы;
+
+2. SELCTION - ВЫБОР СТРОК ИЗ ТАБЛИЦЫ:
+SELECT * FROM имя_таблицы WHERE имя_столбца оператор_сравнения шаблон_сравнения;
+НАПРИМЕР: SELECT * FROM users WHERE id = 1;
+
+3. JOINING - ОБЪЕДИНЕНИЕ СТОЛБЦОВ;
+
+
+/* SELECT statement (НЕ МЕНЯЕТ ДАННЫЕ, ТОЛЬКО ИЗВЛЕКАЕТ ИХ) BASE SYNTAX: */
+1. SELECT *  FROM table;
+2. SELECT column(s) FROM table;
+
+
+
+
