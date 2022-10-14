@@ -1,0 +1,28 @@
+/* СЛУЖЕБНАЯ ИНФОРМАЦИЯ О ТАБЛИЦАХ ИСПОЛЬЗУЕМЫХ В БАЗЕ ДАННЫХ DESCRIBE */
+
+DESCRIBE schema.table_name;
+CREATE DATABASE dictionary_db;
+USE dictionary_db;
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    age INTEGER NULL);
+
+
+INSERT INTO users VALUES (NULL, 'Petr', NULL);
+INSERT INTO users VALUES (NULL, 'Roman', 20);
+INSERT INTO users VALUES (NULL, 'Ivan', 19);
+
+SELECT * FROM users;
+
+
+DESCRIBE dictionary_db.users;
+/* ИЛИ */
+DESC dictionary_db.users;
+/* ИЛИ */
+DESCRIBE users;
+/* ИЛИ */
+DESC users;
+
+
+
