@@ -90,4 +90,7 @@ SELECT first_name, last_name, CONCAT(my last name ', last_name) AS 'my expresion
 ИЛИ
 SELECT first_name, last_name, CONCAT(my last name ', last_name) "my expresion" FROM distinct_func;
 
+/* ТАБЛИЦА MY_DUAL ДЛЯ ВЫВОДА ТЕСТОВЫХ EXPRESSIONS */
+CREATE TABLE my_dual (dump VARCHAR(1));
+INSERT INTO my_dual VALUES ('X');
 
