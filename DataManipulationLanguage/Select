@@ -50,10 +50,44 @@ SELECT DISTINCT job_id, departament_id FROM distinct_func;
 /* EXPRESSION IN SELECT LIST - ВЫРОЖЕНИЯ В SELECT LIST */
 /* SELECT column(s), expression(s) FROM table; - СИНТАКСИС SELECT EXPRESSION */
 
+
+/* TYPE INTEGER ПОДДЕРЖИВАЕТ ОПЕРАЦИИ:  +, -, *, /, () */
 SELECT employees_id, employees_id*2 FROM distinct_func;
 SELECT employees_id, departament_id, employees_id*2+departament_id FROM distinct_func;
 SELECT job_id, employees_id, employees_id*1.5 FROM distinct_func;
 
+/* TYPE VARCHAR ПОДДЕРЖИВАЕТ ОПЕРАЦИИ:  CONCAT,  */
 
+ALTER TABLE distinct_func (
+ADD COLUMN first_name TEXT NOT NULL,
+ADD COLUMN last_name TEXT NOT NULL);
+
+UPDATE dictinct_func SET first_name = 'andrey', last_name = 'gorev' WHERE disinct_id = 1;
+UPDATE distinct_func SET first_name = 'petr', last_name = 'radko' WHERE disinct_id = 2;
+UPDATE distinct_func SET first_name = 'misha', last_name = 'nemo' WHERE disinct_id = 3;
+UPDATE distinct_func SET first_name = 'toly', last_name = 'esmus' WHERE disinct_id = 4;
+UPDATE distinct_func SET first_name = 'kirill', last_name = 'tor' WHERE disinct_id = 5;
+UPDATE distinct_func SET first_name = 'viktor', last_name = 'car' WHERE disinct_id = 6;
+UPDATE distinct_func SET first_name = 'nikita', last_name = 'leo' WHERE disinct_id = 7;
+UPDATE distinct_func SET first_name = 'ivan', last_name = 'ferma' WHERE disinct_id = 8;
+UPDATE distinct_func SET first_name = 'evgen', last_name = 'messing' WHERE disinct_id = 9;
+UPDATE distinct_func SET first_name = 'garik', last_name = 'lipskii' WHERE disinct_id = 10;
+UPDATE distinct_func SET first_name = 'pavel', last_name = 'chig' WHERE disinct_id = 11;
+UPDATE distinct_func SET first_name = 'hugo', last_name = 'porto' WHERE disinct_id = 12;
+UPDATE distinct_func SET first_name = 'fill', last_name = 'kastro' WHERE disinct_id = 13;
+
+SELECT CONCAT(first_name, last_name) FROM distinct_func;
+SELECT CONCAT(first_name, employees_id) FROM distinct_func;
+SELECT CONCAT('my name is ', first_name, ', my last name ', last_name) FROM distinct_func;
+
+
+/* ALIAS - ЭТО АЛЬТЕРНАТИВНОЕ ИМЯ ДЛЯ СТОЛБЦА ИЛИ ЦЕЛОГО ВЫРОЖЕНИЯ */
+SELECT first_name, last_name, CONCAT(my last name ', last_name) AS expresion FROM distinct_func;
+ИЛИ
+SELECT first_name, last_name, CONCAT(my last name ', last_name) expresion FROM distinct_func;
+
+SELECT first_name, last_name, CONCAT(my last name ', last_name) AS 'my expresion' FROM distinct_func;
+ИЛИ
+SELECT first_name, last_name, CONCAT(my last name ', last_name) "my expresion" FROM distinct_func;
 
 
