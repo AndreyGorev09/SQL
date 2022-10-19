@@ -110,6 +110,25 @@ SELECT "It's my life" FROM my_dual;
 /* 2. КОНЦЕПЦИЯ SELECTION: */
 SELECT column(s) FROM table WHERE condition(s)-условие;
 
+/* ОПЕРАТОР СРАВНЕНИЯ: =, >, <, >=, <=, <> OR != */
+
 SELECT first_name, last_name FROM distinct_func WHERE id = 1;
 SELECT first_name, last_name, job_id FROM distinct_func WHERE employees_id = 102;
 SELECT * FROM distinct_func WHERE first_name = 'andrey';
+SELECT first_name, last_name, job_id FROM distinct_func WHERE employees_id = 100+2;
+SELECT * FROM distinct_func WHERE employees_id >= distinct_id + 100;
+SELECT * FROM distinct_func WHERE end_date = '2022-11-16';
+
+
+/* ОПЕРАТОР BETWEEN */
+SELECT * FROM distinct_func WHERE employees_id BETWEEN 150 AND 200;
+SELECT * FROM dictinct_func WHERE first_name BETWEEN 'a' and 'z';
+
+/* ОПЕРАТОР IN */
+SELECT * FROM dictinct_func WHERE distinct_id IN (1, 2, 3);
+SELECT * FROM distinct_func WHERE first_name in ('andrey', 'petr', 'misha');
+
+/* ОПЕРАТОР IS NULL */
+ALTER TABLE distinct_func (ADD COLUMN is_null TEXT NULL);
+UPDATE dictinct_func SET is_null = 'THIS IS NOT NULL' WHERE distinct_id IN (1,3,5,7,9,10,11);
+SELECT * FROM dictinct_func WHERE is_null IS NULL;
