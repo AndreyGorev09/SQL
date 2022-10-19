@@ -10,6 +10,8 @@ SELECT * FROM имя_таблицы WHERE имя_столбца оператор
 3. JOINING - ОБЪЕДИНЕНИЕ СТОЛБЦОВ;
 
 
+
+/* 1. КОНЦЕПЦИЯ PROJECTION: */
 /* SELECT statement (НЕ МЕНЯЕТ ДАННЫЕ, ТОЛЬКО ИЗВЛЕКАЕТ ИХ) BASE SYNTAX: */
 1. SELECT *  FROM table;
 2. SELECT column(s) FROM table;
@@ -90,7 +92,24 @@ SELECT first_name, last_name, CONCAT(my last name ', last_name) AS 'my expresion
 ИЛИ
 SELECT first_name, last_name, CONCAT(my last name ', last_name) "my expresion" FROM distinct_func;
 
-/* ТАБЛИЦА MY_DUAL ДЛЯ ВЫВОДА ТЕСТОВЫХ EXPRESSIONS */
-CREATE TABLE my_dual (dump VARCHAR(1));
-INSERT INTO my_dual VALUES ('X');
 
+/* ТАБЛИЦА MY_DUAL ДЛЯ ВЫВОДА ТЕСТОВЫХ EXPRESSIONS */
+CREATE TABLE my_dual (dummy VARCHAR(1));
+INSERT INTO my_dual VALUES ('X');
+SELECT CONCAT('ABC', 'XYZ', (30*90)) FROM my_dual;
+SELECT CONCAT('PRIVET', ', MY NAME IS ANDREY!') AS greeting FROM my_dual;
+SELECT CONCAT(36*365*24*60*60) AS 'moy vozrost v sekundax' FROM my_dual;
+
+
+/* ЭКРАНИРОВАНИЕ В ТЕКСТОВЫХ ВЫРОЖЕНИЯХ */
+SELECT 'It''s my life' FROM my_dual;
+SELECT "It's my life" FROM my_dual;
+
+
+
+/* 2. КОНЦЕПЦИЯ SELECTION: */
+SELECT column(s) FROM table WHERE condition(s)-условие;
+
+SELECT first_name, last_name FROM distinct_func WHERE id = 1;
+SELECT first_name, last_name, job_id FROM distinct_func WHERE employees_id = 102;
+SELECT * FROM distinct_func WHERE first_name = 'andrey';
