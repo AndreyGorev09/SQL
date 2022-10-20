@@ -132,3 +132,16 @@ SELECT * FROM distinct_func WHERE first_name in ('andrey', 'petr', 'misha');
 ALTER TABLE distinct_func (ADD COLUMN is_null TEXT NULL);
 UPDATE dictinct_func SET is_null = 'THIS IS NOT NULL' WHERE distinct_id IN (1,3,5,7,9,10,11);
 SELECT * FROM dictinct_func WHERE is_null IS NULL;
+
+/* ОПЕРАТОР LIKE: % - ЛЮБАЯ ПОСЛЕДОВАТЕЛЬНОСТЬ ЛЮБЫХ СИМВОЛОВ И _ - ЛЮБОЙ ОДИН СИМВОЛ; */
+SELECT * FROM distinct_func;
+SELECT * FROM dictinct_func WHERE first_name LIKE '%y';
+SELECT * FROM dictinct_func WHERE first_name LIKE '%e%';
+SELECT * FROM dictinct_func WHERE first_name LIKE 'e%';
+SELECT * FROM dictinct_func WHERE first_name LIKE '_i%';
+SELECT * FROM dictinct_func WHERE first_name LIKE '__k%';
+SELECT * FROM dictinct_func WHERE first_name LIKE '%t%';
+
+/* ИСПОЛЬЗОВАНИЯ LIKE СО СПЕЦИАЛЬНЫМИ СИМВОЛАМИ % И _ */
+SELECT * FROM dictinct_func WHERE first_name LIKE 'e!%%' ESCAPE '!';
+SELECT * FROM dictinct_func WHERE first_name LIKE 'e!_%' ESCAPE '!';
