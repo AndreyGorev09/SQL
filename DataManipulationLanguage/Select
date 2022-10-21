@@ -145,3 +145,14 @@ SELECT * FROM dictinct_func WHERE first_name LIKE '%t%';
 /* ИСПОЛЬЗОВАНИЯ LIKE СО СПЕЦИАЛЬНЫМИ СИМВОЛАМИ % И _ */
 SELECT * FROM dictinct_func WHERE first_name LIKE 'e!%%' ESCAPE '!';
 SELECT * FROM dictinct_func WHERE first_name LIKE 'e!_%' ESCAPE '!';
+
+/* ОПЕРАТОР ORDER BY */
+SELECT * | {DISTINCT column(s) alias, expression(s) alias} 
+FROM table
+WHERE condision(s)
+ORDER BY {col(s)| exp(s)| numeric position column in table} {ASC|DESC} {NULLS FIRST|LAST};
+
+SELECT * FROM distict_func WHERE is_null IS NULL ORDER BY distinct_id DESC; /* СОРТИРОВКА ОТ БОЛЬШЕГО К МЕНЬШЕМУ */
+SELECT * FROM distinct_func WHERE is_null IS NULL ORDER BY distinct_id ASC; /* СОРТИРОВКА ОТ МЕНЬШЕГО К БОЛЬШЕМУ */
+
+SELECT * FROM distict_func ORDER BY 2; /* СОРТИРОВКА ПО ПОРЯДКОВОМУ НОМЕРУ КОЛОНКИ В ТАБЛИЦЕ */
