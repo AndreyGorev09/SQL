@@ -156,3 +156,32 @@ SELECT * FROM distict_func WHERE is_null IS NULL ORDER BY distinct_id DESC; /* �
 SELECT * FROM distinct_func WHERE is_null IS NULL ORDER BY distinct_id ASC; /* СОРТИРОВКА ОТ МЕНЬШЕГО К БОЛЬШЕМУ */
 
 SELECT * FROM distict_func ORDER BY 2; /* СОРТИРОВКА ПО ПОРЯДКОВОМУ НОМЕРУ КОЛОНКИ В ТАБЛИЦЕ */
+
+
+/* CHARACTER FUNCTION CASE CONVERTION FUNCTION (МОЖНО ИСПОЛЬЗОВАТЬ И ЗНАЧЕНИЯ И СТОЛБЦЫ И ВЫРОЖЕНИЯ)*/
+
+/* ФУНКЦИЯ LOWER(s), s - sting которую нужно перевести в нижний регистор */
+SELECT * FROM distinct_func;
+SELECT LOWER(first_name), last_name from dictinct_func;
+SELECT LOWER('HELLO WORLD') FROM dictinct_func WHERE distinct_id = 1;
+SELECT * FROM dictinct_func WHERE LOWER(first_name) = 'kirill';
+
+/* ФУНКЦИЯ UPPER(s), s - sting которую нужно перевести в верхний регистор */
+SELECT ('hello world') from distinct_func where distinct_db = 1;
+SELECT UPPER(first_name), UPPER(last_name) FROM distinct_func;
+
+/* ФУНКЦИЯ INITCAP(s), s - sting в которой первая буква делается заглавной остальные прописными */
+SELECT INITCAP(first_name), INITCAP(last_name) from dictinct_func;
+SELECT('hello world') from distict_func where disinct_id = 1;
+
+
+/* CHARACTER MANIPULATIONS FUNCTIONS  */
+
+/* ФУНКЦИЯ CONCAT(s) - ОБЪЕДИНЯЕТ СТРОКИ В ОДНУ СТРОКУ */
+SELECT CONCAT(first_name, last_name) FROM distinct_func;
+SELECT CONCAT(first_name, employees_id) FROM distinct_func;
+SELECT CONCAT('my name is ', first_name, ', my last name ', last_name) FROM distinct_func;
+
+/* ФУНКЦИЯ LENGHT(s) - ВЫЧЕСЛЯЕТ ДЛИНУ СТРОКИ */
+SELECT LENGTH('hello world') from distict_func where disinct_id = 1;
+SELECT * FROM dictinct_func WHERE LENGTH(first_name) > 5;
