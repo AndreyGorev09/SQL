@@ -185,3 +185,23 @@ SELECT CONCAT('my name is ', first_name, ', my last name ', last_name) FROM dist
 /* ФУНКЦИЯ LENGHT(s) - ВЫЧЕСЛЯЕТ ДЛИНУ СТРОКИ */
 SELECT LENGTH('hello world') from distict_func where disinct_id = 1;
 SELECT * FROM dictinct_func WHERE LENGTH(first_name) > 5;
+
+/* ФУНКЦИЯ LPAD(s,n,p)- ДОБАВЛЕНИЕ СИМВОЛОВ СЛЕВО И RPAD(s,n,p)- ДОБАВЛЕНИЕ СИМВОЛОВ СПРАВА - ГДЕ s-СТРОКА, ТЕКСТ n-КОНЕЧНАЯ ДЛИНА ТЕКСТА p-СИМВОЛ ИЛИ ТЕКСТ ДЛЯ ЗАПОЛНЕНИЯ */
+SELECT RPAD(first_name, 10, '$') FROM dictinct_func;
+SELECT LPAD(first_name, 10, '$') FROM dictinct_func;
+SELECT RPAD('HELLO WORLD', 15, '#') FROM dictinct_func;
+SELECT LPAD('HELLO WORLD', 15, '#') FROM dictinct_func;
+
+/* ФУНКЦИЯ TRIM - УДАЛАЯЕТ СИМВОЛЫ ИЗ ТЕКСТА */
+SELECT TRIM(trailing '#' from 'andrey######') FROM distict_func WHERE distinct_id = 1; /* УДАЛЯЕТ СИМВОЛЫ В КОНЦЕ ТЕКСТА */
+SELECT TRIM(leading '#' from '###########andrey') FROM distict_func WHERE distinct_id = 1; /* УДАЛЯЕТ СИМВОЛЫ В НАЧАЛЕ ТЕКСТА */
+SELECT TRIM(both '#' from '#################andrey######') FROM distict_func WHERE distinct_id = 1; /* УДАЛЯЕТ СИМВОЛЫ С ОБОИХ СТОРОН ТЕКСТА */
+
+/* ФУНКЦИЯ INSTR(s, search string) - НАХОДИТ ПОЗИЦИЮ ИСКОМОЙ СТРОКИ, ГДЕ s- СТРОКА, ТЕКСТ, search string - ИСКОМЫЙ ТЕКСТ */
+SELECT INTSTR(first_name, 'e') from dictinct_func where distinct_id = 1;
+
+/* ФУНКЦИЯ SUBSTR(s, search string) - ВЫВОДИТ ТЕКСТ ИСКОМОЙ ПОЗИЦИИ, ГДЕ s- СТРОКА, ТЕКСТ, search posision - ПОЗИЦИЯ С КОТОРОЙ БУДЕТ ВЫВОДИТЬСЯ ТЕКСТ ПОДСТРОКИ */
+SELECT INTSTR(first_name, 3) from dictinct_func where distinct_id = 1;
+
+/* REPLACE(s, search item, repleasment item) - МЕНЯЕТ ЭЛЕМЕНТЫ В СТРОКЕ, ГДЕ s - СТРОКА В КОТОРОЙ БУДЕМ ЗАМЕНЯТЬ , search item - ИСКОМЫЙ ЭЛЕМЕНТ , ЧТО ХОТИМ ЗАМЕНИТЬ, repleasment item - ЗАМЕНЯЮЩИЙ ЭЛЕМЕНТ, НА ЧТО ХОТИМ ЗАМЕНИТЬ */
+SELECT REPLACE(first_name, 'a', 'e') from dictinct_func where distinct_id = 1;
