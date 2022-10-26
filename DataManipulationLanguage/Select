@@ -110,7 +110,7 @@ SELECT "It's my life" FROM my_dual;
 /* 2. КОНЦЕПЦИЯ SELECTION: */
 SELECT column(s) FROM table WHERE condition(s)-условие;
 
-/* ОПЕРАТОР СРАВНЕНИЯ: =, >, <, >=, <=, <> OR != */
+/* ОПЕРАТОР СРАВНЕНИЯ: =, >, <, >=, <=, <> OR AND != */
 
 SELECT first_name, last_name FROM distinct_func WHERE id = 1;
 SELECT first_name, last_name, job_id FROM distinct_func WHERE employees_id = 102;
@@ -205,3 +205,37 @@ SELECT INTSTR(first_name, 3) from dictinct_func where distinct_id = 1;
 
 /* REPLACE(s, search item, repleasment item) - МЕНЯЕТ ЭЛЕМЕНТЫ В СТРОКЕ, ГДЕ s - СТРОКА В КОТОРОЙ БУДЕМ ЗАМЕНЯТЬ , search item - ИСКОМЫЙ ЭЛЕМЕНТ , ЧТО ХОТИМ ЗАМЕНИТЬ, repleasment item - ЗАМЕНЯЮЩИЙ ЭЛЕМЕНТ, НА ЧТО ХОТИМ ЗАМЕНИТЬ */
 SELECT REPLACE(first_name, 'a', 'e') from dictinct_func where distinct_id = 1;
+
+
+/* NUMERIC FUNCTIONS */
+
+/* ФУНКЦИЯ ROUND (n, precision) - ГДЕ s- ЧИСЛО, precision- ТОЧНОСТЬ;  - ОКРУГЛЯЕТ ЧИСЛО ДО УКАЗАННОЙ ТОЧНОСТИ */
+SELECT ROUND(3.14) FROM my_dual;
+SELECT ROUND(3.5678, 2) FROM my_dual;
+SELECT ROUND(departament_id/3, 2) FROM dictinct_func;
+
+/* ФУНКЦИЯ TRUNC (n, precision) - ГДЕ s- ЧИСЛО, precision- ТОЧНОСТЬ;  - ОТСИКАЕТ ОСТАТОК ДО УКАЗАННОЙ ТОЧНОСТИ */
+SELECT TRUNC(3.14) FROM my_dual;
+SELECT TRUNC(3.5678, 2) FROM my_dual;
+SELECT TRUNC(departament_id/3, 2) FROM dictinct_func;
+
+/* ФУНКЦИЯ MOD(devident, devisor) - ГДЕ devident- ДЕЛИМОЕ, devisor- ДЕЛИТЕЛЬ; - ОСТАТОК ОТ ДЕЛЕНИЯ */
+SELECT MOD(10, 2) FROM my_dual;
+SELECT MOD(9, 2) FROM my_dual;
+SELECT MOD(departament_id, 3) FROM dictinct_func WHERE departament_id = 3;
+
+
+/* DATE FUNCTION */
+/* ФУНКЦИЯ SYSDATE() - ВЫВОДИТ ТЕКУЩУЮ ДАТУ И ВРЕМЯ */
+SELECT SYSDATE() FROM my_dual;
+/* MONTHS_BETWEEN(start_date, end_date) - ГДЕ start_date- С КАКОГО МЕСЯЦА , end_date- ПО КАКОЙ МЕСЯЦ; - ВЫВОДИТ КОЛИЧЕСТВО МЕСЯЦЕВ */
+
+
+/* NULL FUNCTIONS */
+/* NVL(value, ifnull) - ГДЕ value- , ifnull-; ПРОВЕРЯЕТ И ВОЗВРАЩАЕТ ЗНАЧЕНИЕ КОТОРОЕ НЕ ЯВЛЯЕТСЯ NULL*/
+
+
+/* CONDISION FUMCTIONS  46 УРОК */
+
+
+
