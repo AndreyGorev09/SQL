@@ -29,7 +29,7 @@ INSERT INTO sales VALUES (NULL, 'Аня', 'Комарова', 'Жвачка', 22
 SELECT SUM(price) FROM sales;
 
 
-/* ФУНКЦИЯ NIN/MAX ВЫВОДИТ МИНИМАЛЬНОЕ.МАКСИМАЛЬНОЕ ЧИСЛО ИЗ ПОЛЯ(ЕЙ): */
+/* ФУНКЦИЯ MIN/MAX ВЫВОДИТ МИНИМАЛЬНОЕ.МАКСИМАЛЬНОЕ ЧИСЛО ИЗ ПОЛЯ(ЕЙ): */
 SELECT s_product, MIN(price) FROM sales;
 SELECT s_product, MAX(price) FROM sales;
 
