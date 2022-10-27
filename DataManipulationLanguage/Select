@@ -235,7 +235,47 @@ SELECT SYSDATE() FROM my_dual;
 /* NVL(value, ifnull) - ГДЕ value- , ifnull-; ПРОВЕРЯЕТ И ВОЗВРАЩАЕТ ЗНАЧЕНИЕ КОТОРОЕ НЕ ЯВЛЯЕТСЯ NULL*/
 
 
-/* CONDISION FUMCTIONS  46 УРОК */
+
+/* CONDISION FUNCTIONS SIMPL CASE(expr, comp, iftrue)-ГДЕ expr - ОСНОВНОЕ ВЫРОЖЕНИЕ С КОТОРЫМ СРАВНИВАЕМ,comp - УСЛОВИЕ КОТОРОЕ СРАВНИВАЕТЬСЯ ,iftrue - ЗНАЧЕНИЕ КОТОРОЕ ВЫВЕДИТЬСЯ ЕСЛИ УСЛОВИЕ ВЫПОЛНИТЬСЯ, iffalse - ЗНАЧЕНИЕ КОТОРОЕ НЕ ВЫВЕДИТЬСЯ ЕСЛИ УСЛОВИЕ ВЫПОЛНИТЬСЯ; - ВОЗВРОЩАЕТ ЗНАЧЕНИЕ ЕСЛИ  УСЛОВИЯ ВЫПОЛНЯЮТСЯ */
+CASE(expr)
+WHEN(comp1) THEN(iftrue1)
+WHEN(comp2) THEN(iftrue2)
+WHEN(comp(n)) THEN(iftrue(n))
+ELSE iffalse
+END
+
+SELECT CASE 3*4 
+WHEN 12 THEN 'dvenadcat'
+END
+FROM my_dual;
 
 
+/* CONDISION FUNCTIONS SEARCH CASE(expr, cond, iftrue) - ГДЕ cond - УСЛОВИЕ КОТОРОЕ СРАВНИВАЕТЬСЯ ВНУТРИ CASE, iftrue - ЗНАЧЕНИЕ КОТОРОЕ ВЫВЕДИТЬСЯ ЕСЛИ УСЛОВИЕ ВЫПОЛНИТЬСЯ, iffalse - ЗНАЧЕНИЕ КОТОРОЕ НЕ ВЫВЕДИТЬСЯ ЕСЛИ УСЛОВИЕ ВЫПОЛНИТЬСЯ; - ВОЗВРОЩАЕТ ЗНАЧЕНИЕ ЕСЛИ  УСЛОВИЯ ВЫПОЛНЯЮТСЯ */
+CASE
+WHEN(cond1) THEN(iftrue1)
+WHEN(cond2) THEN(iftrue2)
+WHEN(cond(n)) THEN(iftrue(n))
+ELSE iffalse
+END
 
+SELECT CASE
+WHEN 3*4=11 THEN 'false'
+WHEN 'ok'='ok' THEN 'true'
+else 'null'
+END 
+FROM my_dual;
+
+
+/* GROUP FUNCTION */
+
+/* FUNCTION COUNT(expr), ГДЕ expr - ВЫРОЖЕНИЕ - ВЫВОДИТ КОЛИЧЕСТВО СТРОК В КАКОЙ-ЛИБО ГРУППЕ, NULL ЗНАЧЕНИЕ - НЕ БУДЕТ СЧИТАТЬ */
+SELECT COUNT(*) FROM dictinct_func;
+SELECT COUNT(employees_id) FROM dictinct_func WHERE departament_id > 50;
+
+
+/* FUNCTION SUM(expr), ГДЕ expr - ВЫРОЖЕНИЕ - ВЫВОДИТ СУММУ ЗНАЧЕНИЙ ИЗ СТРОК В КАКОЙ-ЛИБО ГРУППЕ, NULL ЗНАЧЕНИЕ - НЕ БУДЕТ СЧИТАТЬ */
+SELECT COUNT(employees_id) FROM dictinct_func WHERE departament_id > 50;
+
+
+/* FUNCTION AVG(expr), ГДЕ expr - ВЫРОЖЕНИЕ - ВЫВОДИТ СРЕДНЕЕ ЗНАЧЕНИЕ В КАКОЙ-ЛИБО ГРУППЕ, NULL ЗНАЧЕНИЕ - НЕ БУДЕТ СЧИТАТЬ */
+SELECT COUNT(employees_id) FROM dictinct_func WHERE departament_id > 50;
