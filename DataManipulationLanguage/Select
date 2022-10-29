@@ -279,3 +279,12 @@ SELECT COUNT(employees_id) FROM dictinct_func WHERE departament_id > 50;
 
 /* FUNCTION AVG(expr), ГДЕ expr - ВЫРОЖЕНИЕ - ВЫВОДИТ СРЕДНЕЕ ЗНАЧЕНИЕ В КАКОЙ-ЛИБО ГРУППЕ, NULL ЗНАЧЕНИЕ - НЕ БУДЕТ СЧИТАТЬ */
 SELECT COUNT(employees_id) FROM dictinct_func WHERE departament_id > 50;
+
+
+/* FUNCTION GROUP BY - ВЫВОДИТ ОБОБЩЕННЫЙ СГРУППИРОВАННЫЙ ЗАПРОС  */
+SELECT {column(s)|expresion(s)} FROM table GROUP BY {column(s)|expresion(s)};
+
+SELECT job_id, COUNT(last_name) FROM dictinct_func GROUP BY job_id;
+SELECT employees_id, COUNT(departament_id<100) FROM distict_func GROUP BY employees_id;
+SELECT employees_id, MAX(departament_id<100) FROM distict_func GROUP BY employees_id;
+SELECT employees_id, MIN(departament_id<100) FROM distict_func GROUP BY employees_id;
