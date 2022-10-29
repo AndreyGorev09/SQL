@@ -1,3 +1,30 @@
+/* ОСНОВНЫЕ РАЗДЕЛЫ SQL: */
+
+/* DATA CONTROL LANGUAGE (DCL):
+1. GRANT
+2. REVOKE */
+
+/* DATA DIFINITION LANGUAGE (DDL):
+1. ALTER
+2. CREATE
+3. DROP
+4. RENAME
+4. TRUNCATE */
+
+/* DATA MANIPULATION LANGUAGE (DML):
+1. DELETE
+2. INSERT
+3. MERGE 
+4. SELECT
+5. UPDATE */
+
+/* TRANSACTION CONTROL LANGUAGE (TCL):
+1. COMMIT
+2. ROLLBACK
+3. SAVEPOINT */ 
+
+
+
 /* SELECT - 3 ФУНДАМЕНТАЛЬНЫЕ КОНЦЕПЦИИ */
 
 1. PROJECTION - ВЫБОР СТОЛБЦОВ ИЗ ТАБЛИЦЫ:
@@ -288,3 +315,57 @@ SELECT job_id, COUNT(last_name) FROM dictinct_func GROUP BY job_id;
 SELECT employees_id, COUNT(departament_id<100) FROM distict_func GROUP BY employees_id;
 SELECT employees_id, MAX(departament_id<100) FROM distict_func GROUP BY employees_id;
 SELECT employees_id, MIN(departament_id<100) FROM distict_func GROUP BY employees_id;
+
+
+/* DELETE - УДАЛАЯЕТ СТРОКИ ИЗ ТАБЛИЦЫ (ДАННЫЕ МОЖНО ВЕРНУТЬ) */
+DELETE FROM table_name WHERE condision(s);
+
+DELETE FROM dictinct_func; /* УДАЛЯТЬСЯ ВСЕ СТРОКИ В ТАБЛИЦЕ */
+DELETE FROM dictinct_func WHERE distinct_id = 10; /* УДАЛИТЬСЯ СТРОКА КОТОРАЯ УДОВЛЕТВОРЯЕТ УСЛОВИЮ */
+
+
+/* TRUNCATE - ОПУСТОШЕНИЕ ТАБЛИЦЫ ОТ ЗНАЧЕНИЙ (ДАННЫЕ УДАЛЯЮТСЯ БЕЗВОЗВРАТНО) */
+TRUNCATE TABLE schema.table_name;
+
+
+/* INSERT - ВСТАЛЯЕТ ДАННЫЕ В ТАБЛИЦУ */
+INSERT INTO table_name[column(s)] VALUES(value(s));
+
+
+/* UPDATE - ОБНОВЛЯЕТ ДАННЫЕ В ТАБЛИЦЕ */
+UPDATE table_name SET column(s) = value(s) WHERE condision(s);
+
+
+/* CREATE TABLE - СОЗДАНИЕ НОВОЙ ТАБЛИЦЫ ИЛИ НОВОЙ БАЗЫ ДАННЫХ */
+CREATE TABLE schema.table_name (
+    coumn_name data_type DEFAULT expression,
+    ... ,
+    ...
+);
+CREATE DATABASE database_name;
+
+
+/* DROP  - УДАЛЯЕТ ТАБЛИЦУ ИЛИ БАЗУ ДАННЫХ ПОЛНОСТЬЮ (ВМЕСТЕ СО СТРУКТУРОЙ, БЕЗВОЗВРАТНО) */
+DROP TABLE schema.table_name;
+DROP DATABASE database_name;
+
+/* COMMIT - ФИКСИРУЕТ ВСЕ МАНИПУЛЯЦИИ С ТАБЛИЦЕЙ */
+BEGIN;
+INSERT INTO dictinct_func VALUES ( (null, 200, '2002-07-01', '2006-12-31', 'ac account', 90);
+COMMIT;
+
+
+/* ROLLBACK | {TO name_point}- ВОЗВРАЩАЕТ ИЗМЕНЕНИЯ В ТАБЛИЦЕ НА ШАГ НАЗАД ИЛИ К ИМЕННОВАННОЙ ТОЧКИ(SAVEPOINT) */
+BEGIN;
+DELETE FROM dictinct_func WHERE distinct_id < 5;
+ROLLBACK;
+
+/* SAVEPOINT name_point -  УСТАНАВЛИВАЕТ ИМЕННОВАННУЮ ТОЧКУ, name_point - ИМЯ ТОЧКИ */
+BEGIN;
+DELETE FROM dictinct_func WHERE distinct_id < 5;
+SAVEPOINT start;
+DELETE FROM dictinct_func WHERE distinct_id < 7;
+SAVEPOINT end;
+ROLLBACK TO start;
+ROLLBACK;
+COMMIT;
